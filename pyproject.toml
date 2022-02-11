@@ -1,0 +1,62 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.nitpick]
+style = "https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/master/styles/nitpick-style-wemake.toml"
+
+
+[tool.poetry]
+name = "mc-plugin-helper"
+description = "Minecraft plugin helper, updates and checks versions of all plugins on a server!"
+version = "0.1.0-alpha.0"
+license = "MIT"
+
+authors = ["PerchunPak <PerchunPak@users.noreply.github.com>"]
+
+readme = "README.md"
+
+repository = "https://github.com/PerchunPak/mc-plugin-helper"
+
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Intended Audience :: System Administrators",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Home Automation",
+  "Topic :: Internet",
+  "Topic :: Internet :: File Transfer Protocol (FTP)",
+  "Topic :: Software Development :: Version Control",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+click = "8.0.3"
+pyyaml = "6.0"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.931"
+
+wemake-python-styleguide = "^0.16"
+flake8-pytest-style = "^1.6"
+nitpick = "^0.31"
+
+safety = "^1.10"
+
+pytest = "^7.0"
+pytest-cov = "^3.0"
+pytest-randomly = "^3.11"
+
+sphinx = "^4.4"
+sphinx-autodoc-typehints = "^1.16"
+doc8 = "^0.10"
+m2r2 = "^0.3"
+tomlkit = "^0.9"
