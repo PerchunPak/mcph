@@ -45,7 +45,7 @@ class PluginManager(object):
         return plugins
 
     # TODO move to async function
-    def process_plugin(self, jar_file) -> Dict[str: str]:
+    def process_plugin(self, jar_file) -> Dict[str, str]:
         """Opens plugin.jar and then parsing plugin.yml inside .jar.
 
         Args:
