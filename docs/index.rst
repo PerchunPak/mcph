@@ -9,6 +9,11 @@ Contents
 
   pages/changelog.rst
 
+.. toctree::
+  :caption: API
+
+  modules/modules.rst
+
 
 Indices and tables
 ------------------

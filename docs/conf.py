@@ -62,12 +62,14 @@ extensions = [
 
     # Used to insert typehints into the final docs:
     "sphinx_autodoc_typehints",
+
+    # Run sphinx-apidoc on each build:
+    'sphinxcontrib.apidoc',
 ]
 
 autoclass_content = "class"
 autodoc_member_order = "bysource"
 
-autodoc_member_order = "bysource"
 autodoc_default_flags = {
     "members": "",
     "undoc-members": "code,error_template",
@@ -148,7 +150,14 @@ html_sidebars = {
 
 # -- Extension configuration -------------------------------------------------
 
-napoleon_numpy_docstring = False
+napoleon_include_private_with_doc = True
+
+# Configuration for auto-run apidoc on each build\
+apidoc_output_dir = "../docs/modules"
+apidoc_module_dir = "../mc_plugin_helper"
+apidoc_toc_file = False
+apidoc_module_first = True
+apidoc_extra_args = ["--private"]
 
 # -- Options for todo extension ----------------------------------------------
 
