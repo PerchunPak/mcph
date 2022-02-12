@@ -1,6 +1,6 @@
 from click import Path, command, echo, option
 from mc_plugin_helper.config import Config
-from mc_plugin_helper.plugin_manager import PluginManager
+from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
 
 class CLI(object):
@@ -42,7 +42,7 @@ class CLI(object):
 
         if plugin_name == "all":
             self._echo.nice_echo_all_plugins(plugins)
-        elif plugin_name not in plugins:
+        elif Plugin(plugin_name) not in plugins:
             echo("Plugin not installed!")
         else:
             self._echo.nice_echo_plugin(plugin_name)

@@ -1,4 +1,5 @@
 from yaml import safe_load as parse_yaml
+from typing import List, Dict
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.file_manager.factory import FileManagerFactory
 
@@ -29,7 +30,7 @@ class PluginManager(object):
         )
         self.plugins_location = folder
 
-    def get_all_plugins(self) -> list[Plugin]:
+    def get_all_plugins(self) -> List[Plugin]:
         """Getter for list with all plugins.
 
         Returns:
@@ -44,7 +45,7 @@ class PluginManager(object):
         return plugins
 
     # TODO move to async function
-    def process_plugin(self, jar_file) -> dict:
+    def process_plugin(self, jar_file) -> Dict[str: str]:
         """Opens plugin.jar and then parsing plugin.yml inside .jar.
 
         Args:
