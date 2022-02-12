@@ -44,7 +44,7 @@ We use `mypy` to run type checks on our code.
 To use it:
 
 ```bash
-mypy mc_plugin_helper tests/**/*.py
+mypy mc_plugin_helper tests
 ```
 
 This step is mandatory during the CI.

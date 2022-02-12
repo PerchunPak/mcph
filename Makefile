@@ -3,7 +3,7 @@ SHELL:=/usr/bin/env bash
 .PHONY: lint
 lint:
 	poetry run mypy --install-types
-	poetry run mypy mc_plugin_helper tests/**/*.py
+	poetry run mypy mc_plugin_helper tests
 	poetry run flake8 .
 	poetry run doc8 -q docs
 
@@ -19,4 +19,3 @@ package:
 
 .PHONY: test
 test: lint package unit
-
