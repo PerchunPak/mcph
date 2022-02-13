@@ -139,6 +139,7 @@ napoleon_include_private_with_doc = True
 # Configuration for auto-run apidoc on each build\
 apidoc_output_dir = "../docs/modules"
 apidoc_module_dir = "../mc_plugin_helper"
+apidoc_separate_modules = True
 apidoc_toc_file = False
 apidoc_module_first = True
 apidoc_extra_args = ["--private"]
