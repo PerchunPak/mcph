@@ -6,6 +6,24 @@ from mc_plugin_helper.config import Config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
 
+def _find_plugin_in_list(plugin_name: str, plugins: List[Plugin]) -> Union[Plugin, None]:
+    """Found plugin in list, by its name.
+
+    Args:
+        plugin_name: Plugin name of plugin which we try to find.
+        plugins: List of plugins, where we need to find.
+
+    Returns:
+        Plugin object, or None if we didn't find anything.
+    """
+    found_plugin = None
+    for plugin in plugins:
+        if plugin_name == plugin.name:
+            found_plugin = plugin
+            break
+    return found_plugin
+
+
 class CLI(object):
     """Class for CLI interface."""
 
@@ -45,10 +63,12 @@ class CLI(object):
 
         if plugin_name == "all":
             self._echo.nice_echo_all_plugins(plugins)
-        elif Plugin(plugin_name) not in plugins:
+        elif _find_plugin_in_list(plugin_name, plugins) is not None:
             echo("Plugin not installed!")
         else:
-            self._echo.nice_echo_plugin(Plugin(plugin_name))
+            self._echo.nice_echo_plugin(
+                _find_plugin_in_list(plugin_name, plugins)  # type: ignore[arg-type]
+            )
 
 
 # TODO Build a normal class

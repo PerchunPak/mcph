@@ -1,5 +1,6 @@
 """Module for some plugin-manager methods."""
 
+from os.path import join
 from yaml import safe_load as parse_yaml
 from typing import List, Dict
 from mc_plugin_helper.config import Config
@@ -9,12 +10,19 @@ from mc_plugin_helper.file_manager.factory import FileManagerFactory
 class Plugin(object):
     """Create object for plugin."""
 
-    def __init__(self, name, version, file_path, url) -> None:
+    def __init__(self, name, version, file_path) -> None:
         """__init__ method."""
         self.name = name
         self.version = version
         self.file_path = file_path
-        self.url = url
+
+    @classmethod
+    def parse_from_yaml(cls, yaml: Dict[str, str]):
+        return cls(
+            name=yaml["name"],
+            version=yaml[""],
+            file_path=yaml[""],
+        )
 
 
 class PluginManager(object):
@@ -43,7 +51,12 @@ class PluginManager(object):
             if not file.endswith(".jar"):
                 continue
             parsed_data = self.process_plugin(file)
-            plugins.append(Plugin(parsed_data))
+            plugins.append(Plugin(
+                    name=parsed_data["name"],
+                    version=parsed_data["version"],
+                    file_path=join(self.plugins_location, file),
+                )
+            )
         return plugins
 
     # TODO move to async function
