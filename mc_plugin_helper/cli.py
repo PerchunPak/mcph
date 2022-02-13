@@ -1,10 +1,13 @@
+"""Module for CLI commands."""
+
+from typing import List
 from click import Path, command, echo, option
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
 
 class CLI(object):
-    """Класс для CLI интерфейса."""
+    """Class for CLI interface."""
 
     def __init__(self) -> None:
         """__init__ method."""
@@ -25,7 +28,7 @@ class CLI(object):
         default="all",
         help="Plugin name to check.\nDefault - all.",
     )
-    def check(self, folder: str, plugin_name: str):
+    def check(self, folder: str, plugin_name: str) -> None:
         """Check updates for plugin or all plugins.
 
         Args:
@@ -53,12 +56,20 @@ class NiceEcho(object):
     """Class for Nice Echo some info, to console."""
 
     @staticmethod
-    def nice_echo_plugin(plugin) -> None:
-        """Nice echo one plugin."""
+    def nice_echo_plugin(plugin: Plugin) -> None:
+        """Nice echo one plugin.
+
+        Args:
+            plugin: Plugin object with information about it.
+        """
         echo("Plugin: {0}".format(plugin.name))
 
     @staticmethod
-    def nice_echo_all_plugins(plugins) -> None:
-        """Nice echo all plugins, from a list."""
+    def nice_echo_all_plugins(plugins: List[Plugin]) -> None:
+        """Nice echo all plugins, from a list.
+
+        Args:
+            plugins: List with plugins objects with information about it.
+        """
         for plugin in plugins:
             echo("Plugin: {0}".format(plugin.name))

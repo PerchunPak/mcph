@@ -1,3 +1,5 @@
+"""Module for some plugin-manager methods."""
+
 from yaml import safe_load as parse_yaml
 from typing import List, Dict
 from mc_plugin_helper.config import Config

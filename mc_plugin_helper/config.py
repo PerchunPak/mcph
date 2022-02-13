@@ -1,3 +1,5 @@
+"""Module for parse and interact with config."""
+
 from configparser import ConfigParser
 from os.path import exists, expanduser, join
 from typing import TypeVar
@@ -6,7 +8,7 @@ config_class = TypeVar("config_class", bound="Config")
 
 
 class Config(object):
-    """Class for config values.
+    """Class for config.
 
     Attributes:
         config: Main config object.
