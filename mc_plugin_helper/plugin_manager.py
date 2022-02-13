@@ -40,7 +40,7 @@ class PluginManager(object):
         """
         plugins = []
         for file in self.file_manager.get_all_files(self.plugins_location):  # noqa: WPS110,E501
-            if not file.name.endswith(".jar"):
+            if not file.endswith(".jar"):
                 continue
             parsed_data = self.process_plugin(file)
             plugins.append(Plugin(parsed_data))

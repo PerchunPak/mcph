@@ -1,6 +1,6 @@
 """Module for CLI commands."""
 
-from typing import List
+from typing import List, Union
 from click import Path, command, echo, option
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
@@ -28,7 +28,7 @@ class CLI(object):
         default="all",
         help="Plugin name to check.\nDefault - all.",
     )
-    def check(self, folder: str, plugin_name: str) -> None:
+    def check(self, folder: Union[str, None], plugin_name: str) -> None:
         """Check updates for plugin or all plugins.
 
         Args:
@@ -48,7 +48,7 @@ class CLI(object):
         elif Plugin(plugin_name) not in plugins:
             echo("Plugin not installed!")
         else:
-            self._echo.nice_echo_plugin(plugin_name)
+            self._echo.nice_echo_plugin(Plugin(plugin_name))
 
 
 # TODO Build a normal class
