@@ -2,8 +2,7 @@ SHELL:=/usr/bin/env bash
 
 .PHONY: lint
 lint:
-	poetry run mypy --install-types
-	poetry run mypy mc_plugin_helper tests
+	poetry run mypy --install-types --non-interactive mc_plugin_helper tests
 	poetry run flake8 .
 	poetry run doc8 -q docs
 
