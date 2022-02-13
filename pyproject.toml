@@ -62,3 +62,5 @@ furo = "^2022.1.2"
 doc8 = "^0.10"
 m2r2 = "^0.3"
 tomlkit = "^0.9"
+
+importlib-metadata = "^4.11.0"

@@ -1,8 +1,8 @@
 """Module for some plugin-manager methods."""
 
 from os.path import join
+from typing import Dict, List
 from yaml import safe_load as parse_yaml
-from typing import List, Dict
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.file_manager.factory import FileManagerFactory
 
@@ -15,14 +15,6 @@ class Plugin(object):
         self.name = name
         self.version = version
         self.file_path = file_path
-
-    @classmethod
-    def parse_from_yaml(cls, yaml: Dict[str, str]):
-        return cls(
-            name=yaml["name"],
-            version=yaml[""],
-            file_path=yaml[""],
-        )
 
 
 class PluginManager(object):
@@ -51,11 +43,12 @@ class PluginManager(object):
             if not file.endswith(".jar"):
                 continue
             parsed_data = self.process_plugin(file)
-            plugins.append(Plugin(
+            plugins.append(
+                Plugin(
                     name=parsed_data["name"],
                     version=parsed_data["version"],
                     file_path=join(self.plugins_location, file),
-                )
+                ),
             )
         return plugins
 

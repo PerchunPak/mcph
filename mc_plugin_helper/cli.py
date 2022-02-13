@@ -6,7 +6,9 @@ from mc_plugin_helper.config import Config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
 
-def _find_plugin_in_list(plugin_name: str, plugins: List[Plugin]) -> Union[Plugin, None]:
+def _find_plugin_in_list(
+    plugin_name: str, plugins: List[Plugin],
+) -> Union[Plugin, None]:
     """Found plugin in list, by its name.
 
     Args:
@@ -67,7 +69,9 @@ class CLI(object):
             echo("Plugin not installed!")
         else:
             self._echo.nice_echo_plugin(
-                _find_plugin_in_list(plugin_name, plugins)  # type: ignore[arg-type]
+                _find_plugin_in_list(  # type: ignore[arg-type]
+                    plugin_name, plugins,
+                ),
             )
 
 

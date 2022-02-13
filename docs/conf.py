@@ -64,7 +64,7 @@ extensions = [
     "sphinx_autodoc_typehints",
 
     # Run sphinx-apidoc on each build:
-    'sphinxcontrib.apidoc',
+    "sphinxcontrib.apidoc",
 ]
 
 autoclass_content = "class"

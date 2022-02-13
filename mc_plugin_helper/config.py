@@ -28,7 +28,7 @@ class Config(object):
         instance = cls()
 
         if exists(instance.config_path):
-            instance._config.read(instance.config_path)
+            instance._config.read(instance.config_path)  # noqa: WPS437
         else:
             instance.create()
 
@@ -36,6 +36,11 @@ class Config(object):
 
     @property
     def config(self) -> SectionProxy:
+        """Property with config object.
+
+        Returns:
+            Main section from config.
+        """
         return self._config["mc-plugin-helper"]
 
     def create(self) -> None:
