@@ -39,4 +39,4 @@ Currently in work!
 
 ## Credits
 
-This project was generated with [`wemake-python-package`](https://github.com/wemake-services/wemake-python-package). Current template version is: [c662ccac3b909c2dfbe0a990f5fb1ea45b95c25c](https://github.com/wemake-services/wemake-python-package/tree/c662ccac3b909c2dfbe0a990f5fb1ea45b95c25c). See what is [updated](https://github.com/wemake-services/wemake-python-package/compare/c662ccac3b909c2dfbe0a990f5fb1ea45b95c25c...master) since then.
+This project was generated with [`wemake-python-package`](https://github.com/wemake-services/wemake-python-package). Current template version is: [28f77f17fe07eb4bc5ecd2fb9ab02c4cb12341c3](https://github.com/wemake-services/wemake-python-package/tree/28f77f17fe07eb4bc5ecd2fb9ab02c4cb12341c3). See what is [updated](https://github.com/wemake-services/wemake-python-package/compare/28f77f17fe07eb4bc5ecd2fb9ab02c4cb12341c3...master) since then.
