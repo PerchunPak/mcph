@@ -1,7 +1,7 @@
 # mc-plugin-helper
 
 [![Build Status](https://github.com/PerchunPak/mc-plugin-helper/workflows/test/badge.svg?branch=main&event=push)](https://github.com/PerchunPak/mc-plugin-helper/actions?query=workflow%3Atest)
-[![codecov](https://codecov.io/gh/PerchunPak/mc-plugin-helper/branch/master/graph/badge.svg)](https://codecov.io/gh/PerchunPak/mc-plugin-helper)
+[![codecov](https://codecov.io/gh/PerchunPak/mc-plugin-helper/branch/main/graph/badge.svg?token=vMJi00tRkG)](https://codecov.io/gh/PerchunPak/mc-plugin-helper)
 [![Python Version](https://img.shields.io/pypi/pyversions/mc-plugin-helper.svg)](https://pypi.org/project/mc-plugin-helper/)
 [![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
 
