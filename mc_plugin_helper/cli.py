@@ -1,7 +1,7 @@
 """Module for CLI commands."""
 
 from typing import List, Union
-from click import Path, command, echo, option
+from click import Path, command, echo, argument
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
@@ -35,20 +35,16 @@ class CLI(object):
         self._echo = NiceEcho
 
     @command()
-    @option(
-        "--folder",
-        "-f",
-        type=Path(exists=True),
-        help="Folder to search .jar files.\nDefault - get value from config.",
-    )
-    @option(
-        "--plugin_name",
-        "-p",
+    @argument(
+        "plugin_name",
         type=str,
         default="all",
-        help="Plugin name to check.\nDefault - all.",
     )
-    def check(self, folder: Union[str, None], plugin_name: str) -> None:
+    @argument(
+        "folder",
+        type=Path(exists=True),
+    )
+    def check(self, plugin_name: str, folder: Union[str, None]) -> None:
         """Check updates for plugin or all plugins.
 
         Args:
