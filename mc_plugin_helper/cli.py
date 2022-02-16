@@ -1,7 +1,7 @@
 """Module for CLI commands."""
 
 from typing import List, Union
-from click import Path, argument, command, echo
+from click import Path, argument, command, echo, group
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
@@ -33,10 +33,6 @@ class CLI(object):
         """__init__ method."""
         self.config = Config.init().config
         self._echo = NiceEcho
-
-    @group()
-    def cli(self):
-        """"""
 
     @command()
     @argument(
