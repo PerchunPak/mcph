@@ -1,7 +1,7 @@
 """Module for CLI commands."""
 
 from typing import List, Union
-from click import Path, argument, command, echo, group
+from click import Path, argument, command, echo
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
