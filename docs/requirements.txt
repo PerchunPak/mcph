@@ -10,5 +10,5 @@ tomlkit==0.10.0
 
 # Dependencies of our project:
 typing-extensions>=4.1.1
-click==8.0.3
+click==8.0.4
 pyyaml==6.0
