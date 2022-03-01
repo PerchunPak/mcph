@@ -63,4 +63,4 @@ doc8 = "^0.10"
 m2r2 = "^0.3"
 tomlkit = "^0.10"
 
-importlib-metadata = "^4.11.0"
+importlib-metadata = "^4.11.2"
