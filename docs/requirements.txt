@@ -6,7 +6,7 @@ sphinx-autodoc-typehints==1.17.0
 sphinxcontrib-apidoc>=0.3.0
 furo>=2022.3.4
 m2r2==0.3.2
-tomlkit==0.10.0
+tomlkit==0.10.1
 
 # Dependencies of our project:
 typing-extensions>=4.1.1
