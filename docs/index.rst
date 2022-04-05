@@ -4,15 +4,15 @@ Contents
 --------
 
 .. toctree::
-  :maxdepth: 1
-  :caption: Changelog
+	:maxdepth: 1
+	:caption: Changelog
 
-  pages/changelog.rst
+	pages/changelog.rst
 
 .. toctree::
-  :caption: API
+	:caption: API
 
-  modules/modules.rst
+	modules/modules.rst
 
 
 Indices and tables

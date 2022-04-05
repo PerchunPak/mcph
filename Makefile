@@ -1,9 +1,13 @@
 SHELL:=/usr/bin/env bash
 
 .PHONY: lint
-lint:
+lint: style
+
+.PHONY: style
+style:
+	poetry run black .
+	poetry run isort .
 	poetry run mypy --install-types --non-interactive mc_plugin_helper tests
-	poetry run flake8 .
 	poetry run doc8 -q docs
 
 .PHONY: unit

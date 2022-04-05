@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.abspath(".."))
 
 # -- Project information -----------------------------------------------------
 
+
 def _get_project_meta():
     with open("../pyproject.toml") as pyproject:
         file_contents = pyproject.read()
@@ -29,7 +30,7 @@ def _get_project_meta():
 
 pkg_meta = _get_project_meta()
 project = str(pkg_meta["name"])
-copyright = "2022, PerchunPak"  # noqa: WPS125
+copyright = "2022, PerchunPak"
 author = "PerchunPak"
 
 # The short X.Y version
@@ -53,16 +54,12 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
     "sphinx.ext.autosummary",
-
     # Used to write beautiful docstrings:
     "sphinx.ext.napoleon",
-
     # Used to include .md files:
     "m2r2",
-
     # Used to insert typehints into the final docs:
     "sphinx_autodoc_typehints",
-
     # Run sphinx-apidoc on each build:
     "sphinxcontrib.apidoc",
 ]

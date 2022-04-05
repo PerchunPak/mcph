@@ -11,6 +11,11 @@ To install them you would need to run `install` command:
 poetry install
 ```
 
+Also lets install `pre commit hooks` in `git`:
+```bash
+poetry run pre-commit install
+```
+
 To activate your `virtualenv` run `poetry shell`.
 
 
@@ -21,8 +26,13 @@ Run `make test` to run everything we have!
 
 ## Tests
 
-We use `pytest` and `flake8` for quality control.
-We also use [wemake_python_styleguide](https://github.com/wemake-services/wemake-python-styleguide) to enforce the code quality.
+We use `pytest` and `black` for quality control.
+
+To run formatter:
+
+```bash
+black .
+```
 
 To run all tests:
 
@@ -30,11 +40,7 @@ To run all tests:
 pytest
 ```
 
-To run linting:
-
-```bash
-flake8 .
-```
+If you want to configure some utils, you need do it in `setup.cfg`.
 These steps are mandatory during the CI.
 
 
@@ -60,13 +66,13 @@ Before submitting your code please do the following steps:
 5. Update `CHANGELOG.md` with a quick summary of your changes
 6. Run `pytest` again to make sure it is still working
 7. Run `mypy` to ensure that types are correct
-8. Run `flake8` to ensure that style is correct
+8. Run `black` to ensure that style is correct
 9. Run `doc8` to ensure that docs are correct
 
 
 ## Other help
 
-You can contribute by spreading a word about this library.
+You can contribute by spreading a word about this tool.
 It would also be a huge contribution to write
 a short article on how you are using this project.
 You can also share your best practices with us.

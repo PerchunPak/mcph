@@ -3,17 +3,13 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 
-[tool.nitpick]
-style = "https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/master/styles/nitpick-style-wemake.toml"
-
-
 [tool.poetry]
 name = "mc-plugin-helper"
 description = "Minecraft plugin helper, updates and checks versions of all plugins on a server!"
 version = "0.1.0-alpha.0"
 license = "MIT"
 
-authors = ["PerchunPak <PerchunPak@users.noreply.github.com>"]
+authors = ["PerchunPak <perchunpak@gmail.com>"]
 
 readme = "README.md"
 
@@ -43,11 +39,10 @@ click = "8.1.2"
 pyyaml = "6.0"
 
 [tool.poetry.dev-dependencies]
+black = "^22.3.0"
+isort = "^5.10.1"
+pre-commit = "^2.17.0"
 mypy = "^0.942"
-
-wemake-python-styleguide = "^0.16"
-flake8-pytest-style = "^1.6"
-nitpick = "^0.32"
 
 safety = "^1.10"
 
@@ -57,10 +52,13 @@ pytest-randomly = "^3.11"
 
 sphinx = "^4.5"
 sphinx-autodoc-typehints = "^1.17"
-sphinxcontrib-apidoc = "^0.3.0"
-furo = "^2022.3.4"
-doc8 = "^0.11"
+sphinxcontrib-apidoc = "^0.3"
+furo = "^2022"
+doc8 = "^0.10"
 m2r2 = "^0.3"
 tomlkit = "^0.10"
+toml = "^0.10.2"
 
-importlib-metadata = "*"
+[tool.black]
+line-length = 120
+target-version = ['py310']
