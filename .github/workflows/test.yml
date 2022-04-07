@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11-dev"]
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11-dev']
 
     steps:
     - uses: actions/checkout@v3
@@ -46,26 +46,26 @@ jobs:
         file: ./coverage.xml
 
     - name: Configure git
-      if: ${{ matrix.python-version == "3.10" }}
+      if: ${{ matrix.python-version == '3.10' }}
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
 
     - name: Commit codestyle
-      if: ${{ matrix.python-version == "3.10" }}
+      if: ${{ matrix.python-version == '3.10' }}
       continue-on-error: true
       run: |
         git commit -am "Apply codestyle :pencil2: [skip ci]" || true
 
     - name: Update poetry
-      if: ${{ matrix.python-version == "3.10" }}
+      if: ${{ matrix.python-version == '3.10' }}
       continue-on-error: true
       run: |
         poetry update
         git commit -am "Update poetry.lock :chart_with_upwards_trend:" || true
 
     - name: Push changes
-      if: ${{ matrix.python-version == "3.10" }}
+      if: ${{ matrix.python-version == '3.10' }}
       continue-on-error: true
       uses: ad-m/github-push-action@master
       with:
