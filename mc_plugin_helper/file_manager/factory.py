@@ -1,13 +1,14 @@
 """Module for file managers factory, use it as entry-point to file managers."""
+from typing import Literal
 
 from mc_plugin_helper.file_manager.local import LocalFileManager
 
 
-class FileManagerFactory(object):
+class FileManagerFactory:
     """Fabric for File Managers."""
 
     @staticmethod
-    def create_file_manager(protocol: str) -> LocalFileManager:
+    def create_file_manager(protocol: Literal["local"]) -> LocalFileManager:
         """Create object with file manager.
 
         Args:
@@ -22,5 +23,5 @@ class FileManagerFactory(object):
         if protocol.lower() == "local":
             return LocalFileManager()
         else:
-            # because there are another protocols planning in future
-            raise TypeError("Got wrong protocol")  # noqa: WPS503
+            # because there are another protocols, planning do it in future
+            raise TypeError("Got wrong protocol")

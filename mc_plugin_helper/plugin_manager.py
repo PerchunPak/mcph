@@ -9,7 +9,7 @@ from mc_plugin_helper.config import Config
 from mc_plugin_helper.file_manager.factory import FileManagerFactory
 
 
-class Plugin(object):
+class Plugin:
     """Create object for plugin."""
 
     def __init__(self, name, version, file_path) -> None:
@@ -19,7 +19,7 @@ class Plugin(object):
         self.file_path = file_path
 
 
-class PluginManager(object):
+class PluginManager:
     """Make some stuff with plugin management."""
 
     def __init__(self, folder) -> None:
@@ -29,9 +29,7 @@ class PluginManager(object):
             folder: Folder with plugins.
         """
         self.config = Config.init().config
-        self.file_manager = FileManagerFactory.create_file_manager(
-            self.config["protocol"],
-        )
+        self.file_manager = FileManagerFactory.create_file_manager(self.config["config"]["protocol"])  # type: ignore[arg-type]
         self.plugins_location = folder
 
     def get_all_plugins(self) -> List[Plugin]:
@@ -41,7 +39,7 @@ class PluginManager(object):
             List with all plugins.
         """
         plugins = []
-        for file in self.file_manager.get_all_files(self.plugins_location):  # noqa: WPS110,E501
+        for file in self.file_manager.get_all_files(self.plugins_location):
             if not file.endswith(".jar"):
                 continue
             parsed_data = self.process_plugin(file)

@@ -1,3 +1,4 @@
+"""Module for LocalFileManager class."""
 from os import listdir
 from typing import List
 from zipfile import ZipFile
