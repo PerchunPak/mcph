@@ -63,4 +63,4 @@ class PluginManager(object):
             Parsed yaml in dict.
         """
         plugin_yml = self.file_manager.open_jar(jar_file)
-        return parse_yaml(plugin_yml)
+        return parse_yaml(plugin_yml)  # type: ignore[no-any-return]

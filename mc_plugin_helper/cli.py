@@ -18,7 +18,7 @@ def _find_plugin_in_list(
     Returns:
         Plugin object, or None if we didn't find anything.
     """
-    found_plugin = None
+    found_plugin: Union[Plugin, None] = None
     for plugin in plugins:
         if plugin_name == plugin.name:
             found_plugin = plugin
