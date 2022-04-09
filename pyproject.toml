@@ -35,14 +35,27 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
-click = "8.1.2"
+
+# Our dependecies
 pyyaml = "6.0"
+# Freeze version for black 22.1.0 (update later)
+click = "8.0.4"
+
+# Docs
+sphinx                   = { version = "^4.5",  optional = true }
+sphinx-autodoc-typehints = { version = "^1.17", optional = true }
+sphinxcontrib-apidoc     = { version = "^0.3",  optional = true }
+furo                     = { version = "*",     optional = true }
+m2r2                     = { version = "^0.3",  optional = true }
+tomlkit                  = { version = "^0.10", optional = true }
+toml                     = { version = "^0.10", optional = true }
 
 [tool.poetry.dev-dependencies]
-black = "^22.3.0"
-isort = "^5.10.1"
-pre-commit = "^2.17.0"
-mypy = "^0.942"
+black = "22.1.0"
+isort = "^5.10"
+doc8 = "^0.11"
+pre-commit = "^2.18"
+mypy = "0.942"
 
 safety = "^1.10"
 
@@ -50,14 +63,8 @@ pytest = "^7.1"
 pytest-cov = "^3.0"
 pytest-randomly = "^3.11"
 
-sphinx = "^4.5"
-sphinx-autodoc-typehints = "^1.17"
-sphinxcontrib-apidoc = "^0.3"
-furo = "^2022"
-doc8 = "^0.11"
-m2r2 = "^0.3"
-tomlkit = "^0.10"
-toml = "^0.10.2"
+[tool.poetry.extras]
+docs = ["sphinx", "sphinx-autodoc-typehints", "sphinxcontrib-apidoc", "furo", "m2r2", "tomlkit", "toml"]
 
 [tool.black]
 line-length = 120

@@ -38,6 +38,6 @@ Currently in work!
 ## Credits
 
 This project was generated with [`autodonate-plugin-template`](https://github.com/fire-squad/autodonate-plugin-template). 
-Current template version is: [8aee4e8ca11ce34af488ff3c9c8286340e38e30e](https://github.com/fire-squad/autodonate-plugin-template/tree/8aee4e8ca11ce34af488ff3c9c8286340e38e30e). 
-See what is [updated](https://github.com/fire-squad/autodonate-plugin-template/compare/8aee4e8ca11ce34af488ff3c9c8286340e38e30e...master) 
+Current template version is: [cc64ede4f27ca8e272bff0a42d3950d26bcacb9a](https://github.com/fire-squad/autodonate-plugin-template/tree/cc64ede4f27ca8e272bff0a42d3950d26bcacb9a). 
+See what is [updated](https://github.com/fire-squad/autodonate-plugin-template/compare/cc64ede4f27ca8e272bff0a42d3950d26bcacb9a...master) 
 since then.
