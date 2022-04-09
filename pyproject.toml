@@ -9,7 +9,7 @@ mc-plugin-helper = "mc_plugin_helper.__main__:run"
 [tool.poetry]
 name = "mc-plugin-helper"
 description = "Minecraft plugin helper, updates and checks versions of all plugins on a server!"
-version = "0.1.0-alpha.0"
+version = "0.1.0-beta"
 license = "MIT"
 
 authors = ["PerchunPak <perchunpak@gmail.com>"]
