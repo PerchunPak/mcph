@@ -28,9 +28,16 @@ pip install mc-plugin-helper
 Check updates for all plugins:
 
 ```bash
-> mc-plugin-helper check -f . -p all
+> mc-plugin-helper check all .
 
-Currently in work!
+Plugin: AuthMe
+Plugin: ClearLag
+Plugin: CMI
+Plugin: CMILib
+Plugin: CoreProtect
+Plugin: FastAsyncWorldEdit
+Plugin: Geyser-Spigot
+Plugin: LuckPerms
 ```
 
 ## Thanks
