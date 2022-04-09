@@ -8,6 +8,10 @@
 
 Minecraft plugin helper, updates and checks versions of all plugins on a server!
 
+# Project in developing! Please do not use it!
+
+At now implemented only output of plugins names.
+
 ## Features
 
 - Nice and powerful [documentation](https://mc-plugin-helper.readthedocs.io/en/latest/)!
