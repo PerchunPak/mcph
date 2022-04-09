@@ -5,9 +5,6 @@ from __future__ import annotations
 from configparser import ConfigParser
 from os import path
 
-# Lazy-init
-__config = ConfigParser()
-
 
 class Config:
     """Class for config.
@@ -19,8 +16,7 @@ class Config:
 
     def __init__(self) -> None:
         """__init__ method."""
-        global __config
-        self.config = __config
+        self.config = ConfigParser()
         self.config_path = path.join(path.expanduser("~"), ".mc-plugin-helper.ini")
 
     @classmethod
@@ -59,3 +55,6 @@ class Config:
         """Write in file configuration from `self.config`."""
         with open(self.config_path, "w") as config_file:
             self.config.write(config_file)
+
+
+config = Config.init().config

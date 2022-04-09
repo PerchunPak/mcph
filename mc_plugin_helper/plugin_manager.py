@@ -5,7 +5,7 @@ from typing import Dict, List
 
 from yaml import safe_load as parse_yaml
 
-from mc_plugin_helper.config import Config
+from mc_plugin_helper.config import config
 from mc_plugin_helper.file_manager.factory import FileManagerFactory
 
 
@@ -22,14 +22,13 @@ class Plugin:
 class PluginManager:
     """Make some stuff with plugin management."""
 
-    def __init__(self, folder) -> None:
+    def __init__(self, folder: str) -> None:
         """__init__ method.
 
         Args:
             folder: Folder with plugins.
         """
-        self.config = Config.init().config
-        self.file_manager = FileManagerFactory.create_file_manager(self.config["config"]["protocol"])  # type: ignore[arg-type]
+        self.file_manager = FileManagerFactory.create_file_manager(config["config"]["protocol"])  # type: ignore[arg-type]
         self.plugins_location = folder
 
     def get_all_plugins(self) -> List[Plugin]:
@@ -42,7 +41,7 @@ class PluginManager:
         for file in self.file_manager.get_all_files(self.plugins_location):
             if not file.endswith(".jar"):
                 continue
-            parsed_data = self.process_plugin(file)
+            parsed_data = self.process_plugin(join(self.plugins_location, file))
             plugins.append(
                 Plugin(
                     name=parsed_data["name"],

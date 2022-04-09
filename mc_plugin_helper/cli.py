@@ -4,7 +4,7 @@ from typing import List, Optional, Union
 
 from click import Path, argument, command, echo
 
-from mc_plugin_helper.config import Config
+from mc_plugin_helper.config import config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
 
@@ -25,17 +25,13 @@ def _find_plugin_in_list(plugin_name: str, plugins: List[Plugin]) -> Optional[Pl
 
 
 class CLI:
-    """Class for CLI interface."""
+    """Class for CLI interface. Do not forget add commands to __main__.py!"""
 
-    def __init__(self) -> None:
-        """__init__ method."""
-        self.config = Config.init().config
-        self._echo = NiceEcho
-
+    @staticmethod
     @command()
     @argument("plugin_name", type=str, default="all")
-    @argument("folder", type=Path(exists=True))
-    def check(self, plugin_name: str, folder: Union[str, None]) -> None:
+    @argument("folder", type=Path(exists=True), required=False)
+    def check(plugin_name: str, folder: Union[str, None]) -> None:
         """Check updates for plugin or all plugins.
 
         Args:
@@ -45,18 +41,18 @@ class CLI:
             plugin_name: Plugin name to check, or just "all".
         """
         if folder is None:
-            folder = self.config["config"]["plugins-path"]
+            folder = config["config"]["plugins-path"]
 
         plugin_manager = PluginManager(folder)
         plugins = plugin_manager.get_all_plugins()
         plugin = _find_plugin_in_list(plugin_name, plugins)
 
         if plugin_name == "all":
-            self._echo.nice_echo_all_plugins(plugins)
+            NiceEcho.nice_echo_all_plugins(plugins)
         elif plugin is None:
             echo("Plugin not installed!")
         else:
-            self._echo.nice_echo_plugin(plugin)
+            NiceEcho.nice_echo_plugin(plugin)
 
 
 # TODO Build a normal class
@@ -79,5 +75,8 @@ class NiceEcho:
         Args:
             plugins: List with plugins objects with information about it.
         """
+        if len(plugins) == 0:
+            echo("No plugins found!")
+            return
         for plugin in plugins:
             echo("Plugin: {0}".format(plugin.name))
