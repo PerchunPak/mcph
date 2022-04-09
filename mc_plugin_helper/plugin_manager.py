@@ -2,7 +2,9 @@
 
 from os.path import join
 from typing import Dict, List
+
 from yaml import safe_load as parse_yaml
+
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.file_manager.factory import FileManagerFactory
 

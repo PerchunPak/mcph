@@ -1,6 +1,7 @@
 """Module for parse and interact with config."""
 
 from __future__ import annotations
+
 from configparser import ConfigParser, SectionProxy
 from os.path import exists, expanduser, join
 

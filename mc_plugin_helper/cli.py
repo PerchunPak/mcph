@@ -1,13 +1,16 @@
 """Module for CLI commands."""
 
 from typing import List, Union
+
 from click import Path, argument, command, echo
+
 from mc_plugin_helper.config import Config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
 
 def _find_plugin_in_list(
-    plugin_name: str, plugins: List[Plugin],
+    plugin_name: str,
+    plugins: List[Plugin],
 ) -> Union[Plugin, None]:
     """Found plugin in list, by its name.
 
@@ -66,7 +69,8 @@ class CLI(object):
         else:
             self._echo.nice_echo_plugin(
                 _find_plugin_in_list(  # type: ignore[arg-type]
-                    plugin_name, plugins,
+                    plugin_name,
+                    plugins,
                 ),
             )
 
