@@ -17,11 +17,13 @@ class Plugin:
         name: Plugin name.
         version: Plugin version.
         last_version: Latest available plugin version.
-        update_available: Is update available?
         file_path: Path to file, where this plugin is.
+        update_available: Is update available?
     """
 
-    def __init__(self, name: str, version: str, last_version: str, file_path: str) -> None:
+    def __init__(
+        self, name: str, version: str, last_version: str, file_path: str, update_available: Optional[bool] = None
+    ) -> None:
         """__init__ method.
 
         Args:
@@ -29,24 +31,15 @@ class Plugin:
             version: Plugin version.
             last_version: Latest available plugin version.
             file_path: Path to file, where this plugin is.
+            update_available: Is update available?
         """
         self.name = name
         self.version = version
         self.last_version = last_version
-        self.update_available = self._is_update_available()
         self.file_path = file_path
-
-    def _is_update_available(self) -> Optional[bool]:
-        """Checker for plugin, answer on question 'is update available?'.
-
-        Returns:
-            True if update available, False if not and None if we can't check.
-        """
-        if self.last_version == "Not Found":
-            return None
-        if (self.version in self.last_version) or (self.last_version in self.version):
-            return False
-        return True
+        self.update_available = (
+            PluginManager.is_update_available(version, last_version) if update_available is None else update_available
+        )
 
 
 class PluginManager:
@@ -95,3 +88,20 @@ class PluginManager:
         """
         plugin_yml = self.file_manager.open_jar(jar_file)
         return parse_yaml(plugin_yml)  # type: ignore[no-any-return]
+
+    @staticmethod
+    def is_update_available(version: str, last_version: str) -> Optional[bool]:
+        """Checker for plugin, answer on question 'is update available?'.
+
+        Args:
+            version: Current plugin version.
+            last_version: Last available version.
+
+        Returns:
+            True if update available, False if not and None if we can't check.
+        """
+        if last_version == "Not Found":
+            return None
+        if (version in last_version) or (last_version in version):
+            return False
+        return True
