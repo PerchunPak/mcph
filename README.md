@@ -35,7 +35,7 @@ Check updates for all plugins:
 ~ $ mc-plugin-helper check all .
 
 ┌────────────────────────────────────────────────────────────────────────────────┐
-│ Num │        Name        │      Version      │ Last Version │ Update Available │
+│ Num │        Name        │  Current Version  │ Last Version │ Update Available │
 +─────+────────────────────+───────────────────+──────────────+──────────────────+
 │  1  │       AuthMe       │ 5.6.0-beta2-b2453 │ 5.6.0-beta2  │      False       │
 │  2  │      ClearLag      │       3.2.2       │    v3.2.2    │      False       │
