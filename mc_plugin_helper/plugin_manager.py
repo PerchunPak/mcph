@@ -30,8 +30,8 @@ class PluginManager:
         Args:
             folder: Folder with plugins.
         """
-        self.file_manager = FileManagerFactory.create_file_manager(config["config"]["protocol"])  # type: ignore[arg-type]
-        self.library_manager = LibraryManagerFactory.create_file_manager(config["config"]["default_library"])  # type: ignore[arg-type]
+        self.file_manager = FileManagerFactory.create_file_manager(config["config"]["library"])  # type: ignore[arg-type]
+        self.library_manager = LibraryManagerFactory.create_library_manager(config["config"]["default_library"])  # type: ignore[arg-type]
         self.plugins_location = folder
 
     def get_all_plugins(self) -> List[Plugin]:

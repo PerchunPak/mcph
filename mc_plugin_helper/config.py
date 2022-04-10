@@ -40,7 +40,7 @@ class Config:
         self.config["config"] = {
             # Currently, supporting local files.
             # In plans also support FTP and SFTP
-            "protocol": "LOCAL",
+            "library": "LOCAL",
             # At now only supporting spigot
             "default_library": "spigot",
             "plugins-path": "./",

@@ -45,7 +45,7 @@ class SpigotLibraryManager(AbstractLibraryManager):
             return None
 
     def _api_request(self, url: str) -> Response:
-        """Perform API request to Spiget.
+        """Perform API requests to Spiget.
 
         Args:
             url: URL to request.

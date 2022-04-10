@@ -8,11 +8,11 @@ class LibraryManagerFactory:
     """Fabric for Library Managers."""
 
     @staticmethod
-    def create_file_manager(protocol: Literal["spigot"]) -> SpigotLibraryManager:
+    def create_library_manager(library: Literal["spigot"]) -> SpigotLibraryManager:
         """Create object with library manager.
 
         Args:
-            protocol: Protocol for which create file manager.
+            library: Protocol for which create file manager.
 
         Raises:
             TypeError: Wrong protocol provided.
@@ -20,8 +20,8 @@ class LibraryManagerFactory:
         Returns:
             Object of file manager.
         """
-        if protocol.lower() == "spigot":
+        if library.lower() == "spigot":
             return SpigotLibraryManager()
         else:
-            # because there are another protocols, planning do it in future
-            raise TypeError("Got wrong protocol")
+            # because there are another libraries, planning do it in future
+            raise TypeError("Got wrong library")

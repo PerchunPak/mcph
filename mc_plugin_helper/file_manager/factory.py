@@ -15,7 +15,7 @@ class FileManagerFactory:
             protocol: Protocol for which create file manager.
 
         Raises:
-            TypeError: Wrong protocol provided.
+            TypeError: Wrong library provided.
 
         Returns:
             Object of file manager.
@@ -24,4 +24,4 @@ class FileManagerFactory:
             return LocalFileManager()
         else:
             # because there are another protocols, planning do it in future
-            raise TypeError("Got wrong protocol")
+            raise TypeError("Got wrong library")
