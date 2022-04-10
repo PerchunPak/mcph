@@ -10,7 +10,7 @@ mc-plugin-helper = "mc_plugin_helper.__main__:run"
 name = "mc-plugin-helper"
 description = "Minecraft plugin helper, updates and checks versions of all plugins on a server!"
 version = "0.1.0-beta.dev"
-license = "MIT"
+license = "AGPL3"
 
 authors = ["PerchunPak <perchunpak@gmail.com>"]
 
@@ -21,7 +21,7 @@ repository = "https://github.com/PerchunPak/mc-plugin-helper"
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: System Administrators",
-  "License :: OSI Approved :: MIT License",
+  "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
   "Natural Language :: English",
   "Operating System :: OS Independent",
   "Programming Language :: Python",
