@@ -6,7 +6,8 @@ from click import Path, argument, command, echo
 from prettytable import PrettyTable
 
 from mc_plugin_helper.config import config
-from mc_plugin_helper.plugin_manager import Plugin, PluginManager
+from mc_plugin_helper.models.plugin import Plugin
+from mc_plugin_helper.plugin_manager import PluginManager
 
 
 def _find_plugin_in_list(plugin_name: str, plugins: List[Plugin]) -> Optional[Plugin]:

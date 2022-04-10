@@ -1,23 +1,14 @@
 """Module for some plugin-manager methods."""
 
 from os.path import join
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 from yaml import safe_load as parse_yaml
 
 from mc_plugin_helper.config import config
 from mc_plugin_helper.file_manager.factory import FileManagerFactory
-
-
-class Plugin:
-    """Create object for plugin."""
-
-    def __init__(self, name: str, version: str, last_version: Optional[str], file_path: str) -> None:
-        """__init__ method."""
-        self.name = name
-        self.version = version
-        self.last_version = last_version
-        self.file_path = file_path
+from mc_plugin_helper.library_manager.factory import LibraryManagerFactory
+from mc_plugin_helper.models.plugin import Plugin
 
 
 class PluginManager:
@@ -30,6 +21,7 @@ class PluginManager:
             folder: Folder with plugins.
         """
         self.file_manager = FileManagerFactory.create_file_manager(config["config"]["protocol"])  # type: ignore[arg-type]
+        self.library_manager = LibraryManagerFactory.create_file_manager(config["config"]["default_library"])  # type: ignore[arg-type]
         self.plugins_location = folder
 
     def get_all_plugins(self) -> List[Plugin]:

@@ -41,6 +41,8 @@ class Config:
             # Currently, supporting local files.
             # In plans also support FTP and SFTP
             "protocol": "LOCAL",
+            # At now only supporting spigot
+            "default_library": "spigot",
             "plugins-path": "./",
         }
         self.config["remote-data"] = {
