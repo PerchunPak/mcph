@@ -1,7 +1,7 @@
 """Module for some plugin-manager methods."""
 
 from os.path import join
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from yaml import safe_load as parse_yaml
 
@@ -12,10 +12,11 @@ from mc_plugin_helper.file_manager.factory import FileManagerFactory
 class Plugin:
     """Create object for plugin."""
 
-    def __init__(self, name, version, file_path) -> None:
+    def __init__(self, name: str, version: str, last_version: Optional[str], file_path: str) -> None:
         """__init__ method."""
         self.name = name
         self.version = version
+        self.last_version = last_version
         self.file_path = file_path
 
 
@@ -46,6 +47,7 @@ class PluginManager:
                 Plugin(
                     name=parsed_data["name"],
                     version=parsed_data["version"],
+                    last_version=None,  # TODO Add getter for last version of plugin
                     file_path=join(self.plugins_location, file),
                 ),
             )

@@ -3,6 +3,7 @@
 from typing import List, Optional, Union
 
 from click import Path, argument, command, echo
+from prettytable import PrettyTable
 
 from mc_plugin_helper.config import config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
@@ -48,29 +49,35 @@ class CLI:
         plugin = _find_plugin_in_list(plugin_name, plugins)
 
         if plugin_name == "all":
-            NiceEcho.nice_echo_all_plugins(plugins)
+            NiceEcho.nice_echo_plugins(plugins)
         elif plugin is None:
             echo("Plugin not installed!")
         else:
-            NiceEcho.nice_echo_plugin(plugin)
+            NiceEcho.nice_echo_plugins([plugin])
 
 
-# TODO Build a normal class
 class NiceEcho:
     """Class for Nice Echo some info, to console."""
 
     @staticmethod
-    def nice_echo_plugin(plugin: Plugin) -> None:
-        """Nice echo one plugin.
+    def style_table(table: PrettyTable) -> None:
+        """Add some style options to table argument.
 
         Args:
-            plugin: Plugin object with information about it.
+            table: Table which we need change.
         """
-        echo("Plugin: {0}".format(plugin.name))
+        table.vertical_char = "│"
+        table.horizontal_char = "─"
+        table.top_junction_char = "─"
+        table.bottom_junction_char = "─"
+        table.top_right_junction_char = "┐"
+        table.top_left_junction_char = "┌"
+        table.bottom_left_junction_char = "└"
+        table.bottom_right_junction_char = "┘"
 
     @staticmethod
-    def nice_echo_all_plugins(plugins: List[Plugin]) -> None:
-        """Nice echo all plugins, from a list.
+    def nice_echo_plugins(plugins: List[Plugin]) -> None:
+        """Nice echo all plugins from a list.
 
         Args:
             plugins: List with plugins objects with information about it.
@@ -78,5 +85,14 @@ class NiceEcho:
         if len(plugins) == 0:
             echo("No plugins found!")
             return
+
+        table = PrettyTable()
+        NiceEcho.style_table(table)
+        table.field_names = ["Num", "Name", "Version", "Last Version"]
+
+        i = 1
         for plugin in plugins:
-            echo("Plugin: {0}".format(plugin.name))
+            table.add_row([i, plugin.name, plugin.version, plugin.last_version])
+            i += 1
+
+        echo(table)
