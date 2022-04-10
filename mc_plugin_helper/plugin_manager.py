@@ -11,14 +11,39 @@ from mc_plugin_helper.library_manager.factory import LibraryManagerFactory
 
 
 class Plugin:
-    """Create object for plugin."""
+    """Create object for plugin.
+
+    Attributes:
+        name: Plugin name.
+        version: Plugin version.
+        last_version: Latest available plugin version.
+        update_available: Is update available?
+        file_path: Path to file, where this plugin is.
+    """
 
     def __init__(self, name: str, version: str, last_version: Optional[str], file_path: str) -> None:
-        """__init__ method."""
+        """__init__ method.
+
+        Args:
+            name: Plugin name.
+            version: Plugin version.
+            last_version: Latest available plugin version.
+            file_path: Path to file, where this plugin is.
+        """
         self.name = name
         self.version = version
         self.last_version = last_version
+        self.update_available = self._is_update_available()
         self.file_path = file_path
+
+    def _is_update_available(self) -> Optional[bool]:
+        """Checker for plugin, answer on question 'is update available?'."""
+        # TODO Add more options to verify it
+        if self.last_version == "Not Found":
+            return None
+        if self.version == self.last_version:
+            return False
+        return True
 
 
 class PluginManager:

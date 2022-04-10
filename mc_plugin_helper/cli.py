@@ -119,11 +119,11 @@ class NiceEcho:
 
         table = PrettyTable()
         NiceEcho.style_table(table)
-        table.field_names = ["Num", "Name", "Version", "Last Version"]
+        table.field_names = ["Num", "Name", "Version", "Last Version", "Update Available"]
 
         i = 1
         for plugin in plugins:
-            table.add_row([i, plugin.name, plugin.version, plugin.last_version])
+            table.add_row([i, plugin.name, plugin.version, plugin.last_version, plugin.update_available])
             i += 1
 
         echo(table)
