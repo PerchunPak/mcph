@@ -10,14 +10,14 @@ Minecraft plugin helper, updates and checks versions of all plugins on a server!
 
 # Project in developing! Please do not use it!
 
-At now implemented only output of plugins names.
+At now implemented only output of plugins names and their versions.
 
 ## Features
 
 - Nice and powerful [documentation](https://mc-plugin-helper.readthedocs.io/en/latest/)!
 - Easy management plugins in simple commands!
 - Easy readable and supportable code!
-- Support for Spigot.org plugins!
+- Support for Spigotmc.org plugins!
 
 
 ## Installation
@@ -34,14 +34,18 @@ Check updates for all plugins:
 ```bash
 > mc-plugin-helper check all .
 
-Plugin: AuthMe
-Plugin: ClearLag
-Plugin: CMI
-Plugin: CMILib
-Plugin: CoreProtect
-Plugin: FastAsyncWorldEdit
-Plugin: Geyser-Spigot
-Plugin: LuckPerms
+┌─────────────────────────────────────────────────────────────┐
+│ Num │        Name        │      Version      │ Last Version │
++─────+────────────────────+───────────────────+──────────────+
+│  1  │       AuthMe       │ 5.6.0-beta2-b2453 │     None     │
+│  2  │      ClearLag      │       3.2.2       │     None     │
+│  3  │        CMI         │      9.0.2.9      │     None     │
+│  4  │       CMILib       │      1.0.3.11     │     None     │
+│  5  │    CoreProtect     │        20.1       │     None     │
+│  6  │ FastAsyncWorldEdit │  1.17-380;ee0d1b5 │     None     │
+│  7  │   Geyser-Spigot    │   1.4.3-SNAPSHOT  │     None     │
+│  8  │     LuckPerms      │       5.3.74      │     None     │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ## Thanks
