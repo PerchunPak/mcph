@@ -19,7 +19,7 @@ readme = "README.md"
 repository = "https://github.com/PerchunPak/mc-plugin-helper"
 
 classifiers = [
-  "Development Status :: 1 - Planning",
+  "Development Status :: 4 - Beta",
   "Intended Audience :: System Administrators",
   "License :: OSI Approved :: MIT License",
   "Natural Language :: English",
@@ -30,6 +30,7 @@ classifiers = [
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Topic :: Home Automation",
   "Topic :: Internet",
   "Topic :: Internet :: File Transfer Protocol (FTP)",
