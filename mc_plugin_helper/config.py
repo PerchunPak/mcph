@@ -14,19 +14,19 @@ class Config:
         config_path: Path to config, default "~/.mc-plugin-helper.ini".
     """
 
-    def __init__(self) -> None:
+    def __init__(self, config_obj: ConfigParser) -> None:
         """__init__ method."""
-        self.config = ConfigParser()
+        self.config = config_obj
         self.config_path = path.join(path.expanduser("~"), ".mc-plugin-helper.ini")
 
     @classmethod
-    def init(cls) -> Config:
+    def init(cls, config_obj: ConfigParser) -> Config:
         """Class-method for checking, if config already exist.
 
         Returns:
             Class instance.
         """
-        instance = cls()
+        instance = cls(config_obj)
 
         if path.exists(instance.config_path):
             instance.config.read(instance.config_path)
@@ -59,4 +59,4 @@ class Config:
             self.config.write(config_file)
 
 
-config = Config.init().config
+config = Config.init(ConfigParser()).config

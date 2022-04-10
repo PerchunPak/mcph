@@ -5,7 +5,7 @@ from typing import List, Optional, Union
 from click import Path, argument, command, echo
 from prettytable import PrettyTable
 
-from mc_plugin_helper.config import config
+from mc_plugin_helper.config import config, Config
 from mc_plugin_helper.models.plugin import Plugin
 from mc_plugin_helper.plugin_manager import PluginManager
 
@@ -55,6 +55,31 @@ class CLI:
             echo("Plugin not installed!")
         else:
             NiceEcho.nice_echo_plugins([plugin])
+
+    @staticmethod
+    @command()
+    @argument("section", type=str)
+    @argument("name", type=str)
+    @argument("value", type=str, required=False)
+    def config(section: str, name: str, value: Optional[str]) -> None:
+        """Allow changing config without editing it manually.
+
+        Args:
+            section: Section to edit, this is which wrote in [].
+            name: Parameter name to edit.
+            value: Value to set. If not set, we will just show value.
+        """
+        config_render = """[{0}]\n{1} = {2}"""
+
+        if value is None:
+            echo(config_render.format(section, name, config.get(section, name)))
+            return
+
+        echo("Value before: " + config.get(section, name))
+        echo("Changing config to:\n" + config_render.format(section, name, value))
+
+        config.set(section, name, value)
+        Config(config).update_config()
 
 
 class NiceEcho:
