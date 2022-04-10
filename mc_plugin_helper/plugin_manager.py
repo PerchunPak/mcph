@@ -37,11 +37,14 @@ class Plugin:
         self.file_path = file_path
 
     def _is_update_available(self) -> Optional[bool]:
-        """Checker for plugin, answer on question 'is update available?'."""
-        # TODO Add more options to verify it
+        """Checker for plugin, answer on question 'is update available?'.
+
+        Returns:
+            True if update available, False if not and None if we can't check.
+        """
         if self.last_version == "Not Found":
             return None
-        if self.version == self.last_version:
+        if (self.version in self.last_version) or (self.last_version in self.version):
             return False
         return True
 
@@ -73,8 +76,8 @@ class PluginManager:
             plugins.append(
                 Plugin(
                     name=parsed_data["name"],
-                    version=parsed_data["version"],
-                    last_version=self.library_manager.get_latest_version(parsed_data["name"]),
+                    version=str(parsed_data["version"]),
+                    last_version=str(self.library_manager.get_latest_version(parsed_data["name"])),
                     file_path=join(self.plugins_location, file),
                 ),
             )
