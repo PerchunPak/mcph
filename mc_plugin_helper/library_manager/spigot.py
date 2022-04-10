@@ -7,7 +7,7 @@ class SpigotLibraryManager(AbstractLibraryManager):
     """Library manager for ``spigotmc.org``."""
 
     def get_latest_version(self, plugin: Plugin) -> str:
-        """Abstract getter for latest plugin version.
+        """Getter for latest plugin version.
 
         Args:
             plugin: Plugin object to check.
