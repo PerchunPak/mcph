@@ -21,7 +21,7 @@ class Plugin:
         file_path: Path to file, where this plugin is.
     """
 
-    def __init__(self, name: str, version: str, last_version: Optional[str], file_path: str) -> None:
+    def __init__(self, name: str, version: str, last_version: str, file_path: str) -> None:
         """__init__ method.
 
         Args:
