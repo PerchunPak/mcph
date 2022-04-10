@@ -41,6 +41,7 @@ python = "^3.7"
 
 # Our dependecies
 pyyaml = "6.0"
+requests = ">=2.13"
 prettytable = "^3.2"
 # Freeze version for black 22.1.0 (update later)
 click = "8.0.4"
