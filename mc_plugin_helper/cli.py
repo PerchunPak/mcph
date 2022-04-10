@@ -58,22 +58,28 @@ class CLI:
 
     @staticmethod
     @command()
-    @argument("section", type=str)
     @argument("name", type=str)
     @argument("value", type=str, required=False)
-    def config(section: str, name: str, value: Optional[str]) -> None:
+    def config(name: str, value: Optional[str]) -> None:
         """Allow changing config without editing it manually.
 
         Args:
-            section: Section to edit, this is which wrote in [].
-            name: Parameter name to edit.
+            name: Parameter name to edit. Need to be in format ``section.name``.
             value: Value to set. If not set, we will just show value.
         """
+        try:
+            section, name = name.split(".")
+        except ValueError:
+            return echo("Parameter `name` need to be in format `section.name`")
+        if section not in config:
+            return echo("Section not exists!")
+        if name not in config[section]:
+            return echo("Parameter not exists!")
+
         config_render = """[{0}]\n{1} = {2}"""
 
         if value is None:
-            echo(config_render.format(section, name, config.get(section, name)))
-            return
+            return echo(config_render.format(section, name, config.get(section, name)))
 
         echo("Value before: " + config.get(section, name))
         echo("Changing config to:\n" + config_render.format(section, name, value))
