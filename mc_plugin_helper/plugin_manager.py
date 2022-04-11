@@ -105,3 +105,22 @@ class PluginManager:
         if (version in last_version) or (last_version in version):
             return False
         return True
+
+    @staticmethod
+    def get_specified_plugin(plugin_name: str, plugins: List[Plugin]) -> Optional[Plugin]:
+        """Found plugin in list, by its name.
+
+        Args:
+            plugin_name: Plugin name of plugin which we try to find.
+            plugins: List of plugins, where we need to find.
+
+        Returns:
+            Plugin object, or None if we didn't find anything.
+        """
+        for plugin in plugins:
+            if plugin_name == plugin.name:
+                return plugin
+        return None
+
+    def download_plugin(self, plugin):
+        pass

@@ -9,22 +9,6 @@ from mc_plugin_helper.config import Config, config
 from mc_plugin_helper.plugin_manager import Plugin, PluginManager
 
 
-def _find_plugin_in_list(plugin_name: str, plugins: List[Plugin]) -> Optional[Plugin]:
-    """Found plugin in list, by its name.
-
-    Args:
-        plugin_name: Plugin name of plugin which we try to find.
-        plugins: List of plugins, where we need to find.
-
-    Returns:
-        Plugin object, or None if we didn't find anything.
-    """
-    for plugin in plugins:
-        if plugin_name == plugin.name:
-            return plugin
-    return None
-
-
 class CLI:
     """Class for CLI interface. Do not forget add commands to __main__.py!"""
 
@@ -46,7 +30,7 @@ class CLI:
 
         plugin_manager = PluginManager(folder)
         plugins = plugin_manager.get_all_plugins()
-        plugin = _find_plugin_in_list(plugin_name, plugins)
+        plugin = plugin_manager.get_specified_plugin(plugin_name, plugins)
 
         if plugin_name == "all":
             NiceEcho.nice_echo_plugins(plugins)
