@@ -6,7 +6,8 @@ from click import Path, argument, command, echo
 from prettytable import PrettyTable
 
 from mc_plugin_helper.config import Config, config
-from mc_plugin_helper.plugin_manager import Plugin, PluginManager
+from mc_plugin_helper.models.plugin import Plugin
+from mc_plugin_helper.plugin_manager import PluginManager
 
 
 class CLI:
