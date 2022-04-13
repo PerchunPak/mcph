@@ -5,7 +5,7 @@ from os import remove
 
 def remove_trash():
     """Remove residual trash generated with `sphinx`."""
-    for file in glob("modules/autodonate*.rst"):
+    for file in glob("modules/mc_plugin_helper*.rst"):
         remove(file)
 
 
