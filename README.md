@@ -52,7 +52,7 @@ Check updates for all plugins:
 
 ## Credits
 
-This project was generated with [`autodonate-plugin-template`](https://github.com/fire-squad/autodonate-plugin-template). 
-Current template version is: [cc64ede4f27ca8e272bff0a42d3950d26bcacb9a](https://github.com/fire-squad/autodonate-plugin-template/tree/cc64ede4f27ca8e272bff0a42d3950d26bcacb9a). 
-See what is [updated](https://github.com/fire-squad/autodonate-plugin-template/compare/cc64ede4f27ca8e272bff0a42d3950d26bcacb9a...master) 
+This project was generated with [`fire-square-style`](https://github.com/fire-square/fire-square-style). 
+Current template version is: [29e4f5f44a5ae08f31f2052ca9b8059c41313dae](https://github.com/fire-square/fire-square-style/tree/29e4f5f44a5ae08f31f2052ca9b8059c41313dae). 
+See what is [updated](https://github.com/fire-square/fire-square-style/compare/29e4f5f44a5ae08f31f2052ca9b8059c41313dae...master) 
 since then.

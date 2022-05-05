@@ -20,7 +20,7 @@ body:
         A clear and concise description of what you expected to happen.
 
   - type: input
-    id: commit
+    id: commit_repo
     attributes:
       label: Tool commit (or version)
       placeholder: git rev-parse HEAD

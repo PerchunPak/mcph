@@ -12,8 +12,10 @@
 
 import os
 import sys
+from datetime import date
+from typing import Dict
 
-import tomlkit
+from tomli import load as toml_parse
 
 sys.path.insert(0, os.path.abspath(".."))
 
@@ -21,16 +23,14 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 
-def _get_project_meta():
-    with open("../pyproject.toml") as pyproject:
-        file_contents = pyproject.read()
-
-    return tomlkit.parse(file_contents)["tool"]["poetry"]
+def _get_project_meta() -> Dict[str, str]:
+    with open("../pyproject.toml", "rb") as pyproject:
+        return toml_parse(pyproject)["tool"]["poetry"]  # type: ignore[no-any-return]
 
 
 pkg_meta = _get_project_meta()
 project = str(pkg_meta["name"])
-copyright = "2022, PerchunPak"
+copyright = str(date.today().year) + ", PerchunPak"
 author = "PerchunPak"
 
 # The short X.Y version
@@ -60,8 +60,9 @@ extensions = [
     "m2r2",
     # Used to insert typehints into the final docs:
     "sphinx_autodoc_typehints",
-    # Run sphinx-apidoc on each build:
-    "sphinxcontrib.apidoc",
+    # Same to `sphinx.ext.autodoc`, but parse source code
+    # instead of importing it:
+    "autoapi.extension",
 ]
 
 autoclass_content = "class"
@@ -75,7 +76,7 @@ autodoc_default_flags = {
 
 # Set `typing.TYPE_CHECKING` to `True`:
 # https://pypi.org/project/sphinx-autodoc-typehints/
-set_type_checking_flag = False
+set_type_checking_flag = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -93,12 +94,13 @@ master_doc = "index"
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = "en"
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+# This pattern also affects html_static_path and html_extra_path.
+# Also, this should ignore AutoAPI template files.
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "_autoapi_templates/*"]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
@@ -133,13 +135,9 @@ html_static_path = ["_static"]
 
 napoleon_include_private_with_doc = True
 
-# Configuration for auto-run apidoc on each build\
-apidoc_output_dir = "../docs/modules"
-apidoc_module_dir = "../mc_plugin_helper"
-apidoc_separate_modules = True
-apidoc_toc_file = False
-apidoc_module_first = True
-apidoc_extra_args = ["--private"]
+# Configuration for autoapi
+autoapi_dirs = [".."]
+autoapi_template_dir = "_autoapi_templates"
 
 # -- Options for todo extension ----------------------------------------------
 

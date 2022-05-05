@@ -24,14 +24,19 @@ To activate your `virtualenv` run `poetry shell`.
 Run `make test` to run everything we have!
 
 
-## Tests
+## Testing
 
-We use `pytest` and `black` for quality control.
+We use `black`, `flake8` and `pytest` for quality control.
 
 To run formatter:
 
 ```bash
 black .
+```
+
+To run linter (it checks only doc-strings, [more info](http://www.pydocstyle.org/en/latest/error_codes.html)):
+```bash
+flake8 .
 ```
 
 To run all tests:
@@ -50,7 +55,7 @@ We use `mypy` to run type checks on our code.
 To use it:
 
 ```bash
-mypy mc_plugin_helper tests
+mypy .
 ```
 
 This step is mandatory during the CI.
@@ -67,7 +72,7 @@ Before submitting your code please do the following steps:
 6. Run `pytest` again to make sure it is still working
 7. Run `mypy` to ensure that types are correct
 8. Run `black` to ensure that style is correct
-9. Run `doc8` to ensure that docs are correct
+9. Run `doc8` and `flake8` to ensure that docs are correct
 
 
 ## Other help
