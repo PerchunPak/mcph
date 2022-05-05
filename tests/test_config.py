@@ -7,6 +7,7 @@ from mc_plugin_helper.config import Config
 
 
 def test_config_not_exists(mocker: MockerFixture) -> None:
+    """Check that ``Config.init`` creates a config file if it doesn't exist."""
     try:
         remove(path.join(path.expanduser("~"), ".TEST.mc-plugin-helper.ini.TEST."))
     except FileNotFoundError:
@@ -25,6 +26,7 @@ def test_config_not_exists(mocker: MockerFixture) -> None:
 
 
 def test_config_exists(mocker: MockerFixture) -> None:
+    """Check is ``Config.init`` doesn't create a config file if it exists."""
     Config(config_name=".TEST.mc-plugin-helper.ini.TEST.").create()
 
     stub_1 = mocker.stub("ConfigParser.read")

@@ -75,4 +75,11 @@ class PluginManager:
         return None
 
     def download_plugin(self, plugin):
-        pass
+        """Download plugin from library.
+
+        Args:
+            plugin: Plugin object.
+
+        Todo:
+            Make it.
+        """
