@@ -23,6 +23,9 @@ To activate your `virtualenv` run `poetry shell`.
 
 Run `make test` to run everything we have!
 
+Also, because of conflict between `pytest-testmon` and `pytest-cov` we use `--no-cov` argument during `make test`, so in this
+way we're giving prioritize to `pytest-testmon`. If you want to generate coverage report, use `make test ci=1`.
+
 
 ## Testing
 

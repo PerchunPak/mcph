@@ -53,6 +53,6 @@ Check updates for all plugins:
 ## Credits
 
 This project was generated with [`fire-square-style`](https://github.com/fire-square/fire-square-style). 
-Current template version is: [3140623cc72ee80ea4d1738495fb7b4646834af9](https://github.com/fire-square/fire-square-style/tree/3140623cc72ee80ea4d1738495fb7b4646834af9). 
-See what is [updated](https://github.com/fire-square/fire-square-style/compare/3140623cc72ee80ea4d1738495fb7b4646834af9...master) 
+Current template version is: [c94d4ab18b51f38443ab456eea8aa0553faf43d8](https://github.com/fire-square/fire-square-style/tree/c94d4ab18b51f38443ab456eea8aa0553faf43d8). 
+See what is [updated](https://github.com/fire-square/fire-square-style/compare/c94d4ab18b51f38443ab456eea8aa0553faf43d8...master) 
 since then.
