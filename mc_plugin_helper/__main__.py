@@ -14,7 +14,6 @@ def run() -> None:
     """Entrypoint to script."""
     cli_class = CLI()
     cli.add_command(cli_class.check)
-    cli.add_command(cli_class.config)
     cli()
 
 

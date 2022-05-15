@@ -1,11 +1,11 @@
 """Module for CLI commands."""
 
-from typing import List, Optional, Union
+from typing import List, Union
 
 from click import Path, argument, command, echo
 from prettytable import PrettyTable
 
-from mc_plugin_helper.config import Config, config
+from mc_plugin_helper.config import config
 from mc_plugin_helper.models.plugin import Plugin
 from mc_plugin_helper.plugin_manager import PluginManager
 
@@ -27,7 +27,7 @@ class CLI:
             plugin_name: Plugin name to check, or just "all".
         """
         if folder is None:
-            folder = config["config"]["plugins-path"]
+            folder = config.plugins_path
 
         plugin_manager = PluginManager(folder)
         plugins = plugin_manager.get_all_plugins()
@@ -39,37 +39,6 @@ class CLI:
             echo("Plugin not installed!")
         else:
             NiceEcho.nice_echo_plugins([plugin])
-
-    @staticmethod
-    @command()
-    @argument("name", type=str)
-    @argument("value", type=str, required=False)
-    def config(name: str, value: Optional[str]) -> None:
-        """Allow changing config without editing it manually.
-
-        Args:
-            name: Parameter name to edit. Need to be in format ``section.name``.
-            value: Value to set. If not set, we will just show value.
-        """
-        try:
-            section, name = name.split(".")
-        except ValueError:
-            return echo("Parameter `name` need to be in format `section.name`")
-        if section not in config:
-            return echo("Section not exists!")
-        if name not in config[section]:
-            return echo("Parameter not exists!")
-
-        config_render = """[{0}]\n{1} = {2}"""
-
-        if value is None:
-            return echo(config_render.format(section, name, config.get(section, name)))
-
-        echo("Value before: " + config.get(section, name))
-        echo("Changing config to:\n" + config_render.format(section, name, value))
-
-        config.set(section, name, value)
-        Config(config).update_config()
 
 
 class NiceEcho:

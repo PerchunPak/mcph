@@ -1,62 +1,59 @@
 """Module for parse and interact with config."""
 
-from __future__ import annotations
-
-from configparser import ConfigParser
+from dataclasses import dataclass
 from os import path
+from typing import Literal
+
+from decouple import AutoConfig, RepositoryIni
+
+__all__ = ["Config", "config"]
 
 
-class Config:
-    """Class for config.
+# Customising decouple
+class CustomRepositoryIni(RepositoryIni):
+    """Just rename section in INI file."""
 
-    Attributes:
-        config: Main config object.
-        config_path: Path to config, default "~/.mc-plugin-helper.ini".
+    SECTION = "mc-plugin-helper"
+
+
+class CustomDecouple(AutoConfig):
+    """Small patched ``decouple.AutoConfig``.
+
+    It can't read ``.env`` files, also it read ``.mc-plugin-helper.ini``
+    instead of just ``settings.ini``. And it looks for config in user home folder.
     """
 
-    def __init__(self, config_obj: ConfigParser = ConfigParser(), config_name: str = ".mc-plugin-helper.ini") -> None:
-        """__init__ method."""
-        self.config = config_obj
-        self.config_path = path.join(path.expanduser("~"), config_name)
+    SUPPORTED = {".mc-plugin-helper.ini": CustomRepositoryIni}
 
-    @classmethod
-    def init(cls, *args, **kwargs) -> Config:
-        """Class-method for checking, if config already exist.
-
-        Returns:
-            Class instance.
-        """
-        instance = cls(*args, **kwargs)
-
-        if path.exists(instance.config_path):
-            instance.config.read(instance.config_path)
-        else:
-            instance.create()
-
-        return instance
-
-    def create(self) -> None:
-        """Create a new config."""
-        self.config["config"] = {
-            # Currently, supporting local files.
-            # In plans also support FTP and SFTP
-            "protocol": "LOCAL",
-            # At now only supporting spigot
-            "default_library": "spigot",
-            "plugins-path": "./",
-        }
-        self.config["remote-data"] = {
-            "host": "localhost",
-            "port": "5432",
-            "user": "root",
-            "password": "password",
-        }
-        self.update_config()
-
-    def update_config(self) -> None:
-        """Write in file configuration from `self.config`."""
-        with open(self.config_path, "w") as config_file:
-            self.config.write(config_file)
+    def __init__(self):
+        """Overwrite __init__ method, so it is using only user home folder to find config file."""
+        super().__init__(path.expanduser("~"))
 
 
-config = Config.init().config
+decouple = CustomDecouple()  # type: ignore[no-untyped-call]
+
+
+@dataclass
+class Config:
+    """Class for config."""
+
+    protocol: Literal["local"] = decouple("protocol", default="local")
+    """Currently, supporting local files. In plans also support FTP and SFTP."""
+    default_library: Literal["spigot"] = decouple("default library", default="spigot")
+    """At now only supporting spigot"""
+    plugins_path: str = decouple("plugins path", default="./")
+    remote_host: str = decouple("remote host", default="localhost")
+    remote_port: int = decouple("remote port", default=5432, cast=int)
+    remote_user: str = decouple("remote user", default="root")
+    remote_password: str = decouple("remote password", default="123456")
+
+    def __post_init__(self):
+        """Check some types in user config."""
+        if self.protocol.lower() not in ["local"]:
+            raise TypeError("Config field `protocol` should be one of ['local']")
+        if self.default_library.lower() not in ["spigot"]:
+            raise TypeError("Config field `default library` should be one of ['spigot']")
+
+
+config = Config()
+"""Initialised ``Config`` object."""
