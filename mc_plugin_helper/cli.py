@@ -1,35 +1,51 @@
 """Module for CLI commands."""
 
-from typing import List, Union
+from pathlib import Path
+from typing import List
 
-from click import Path, argument, command, echo
 from prettytable import PrettyTable
+from typer import Argument, Typer, echo
 
 from mc_plugin_helper.config import config
 from mc_plugin_helper.models.plugin import Plugin
 from mc_plugin_helper.plugin_manager import PluginManager
+
+app = Typer(name="mc-plugin-helper")
 
 
 class CLI:
     """Class for CLI interface. Do not forget add commands to __main__.py!"""
 
     @staticmethod
-    @command()
-    @argument("plugin_name", type=str, default="all")
-    @argument("folder", type=Path(exists=True), required=False)
-    def check(plugin_name: str, folder: Union[str, None]) -> None:
+    @app.callback(help=None)
+    def callback() -> None:
+        """Stub for typer, so it is not transforming command to main CLI, only as subcommand.
+
+        Remove this when there will be more than one command.
+        """
+
+    @staticmethod
+    @app.command(help="Check updates for plugin or all plugins.")
+    def check(
+        plugin_name: str = Argument("all", help="Plugin name to check, or just `all`."),
+        folder: Path = Argument(
+            config.plugins_path,
+            show_default="From Config",
+            exists=True,
+            file_okay=False,
+            dir_okay=True,
+            help="Folder with plugins. If passed something, try to find plugin with name of `plugin_name`.",
+        ),
+    ) -> None:
         """Check updates for plugin or all plugins.
 
         Args:
+            plugin_name: Plugin name to check, or just `all`.
             folder: Folder with plugins.
-                If nothing passing, check in config.
-                If passed something, check all .jar files in folder.
-            plugin_name: Plugin name to check, or just "all".
+                If nothing passing, use from config.
+                If passed something, try to find plugin with name of ``plugin_name``.
         """
-        if folder is None:
-            folder = config.plugins_path
-
-        plugin_manager = PluginManager(folder)
+        plugin_manager = PluginManager(str(folder))
         plugins = plugin_manager.get_all_plugins()
         plugin = plugin_manager.get_specified_plugin(plugin_name, plugins)
 

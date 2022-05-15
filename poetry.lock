@@ -926,7 +926,7 @@ python-versions = ">=3.6,<4.0"
 name = "typer"
 version = "0.4.1"
 description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -1032,7 +1032,7 @@ docs = ["sphinx", "sphinx-autodoc-typehints", "sphinx-autoapi", "furo", "m2r2"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "94a8320aae85e928665dee733f7a1bbdfe555321f5cca39b071ccfcb6770fccc"
+content-hash = "8ed6ca5144506a3e6ed4270a665e7e90aec6df6bf36b89c7471c0580dead6b89"
 
 [metadata.files]
 alabaster = [
