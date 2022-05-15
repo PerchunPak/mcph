@@ -12,7 +12,7 @@ app = Typer(name="mc-plugin-helper")
 
 
 class CLI:
-    """Class for CLI interface. Do not forget add commands to __main__.py!"""
+    """Class for CLI interface."""
 
     @staticmethod
     @app.callback(help=None)
