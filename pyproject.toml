@@ -43,7 +43,7 @@ python = "^3.8"
 # Our dependecies
 pyyaml = "6.0"
 requests = ">=2.13"
-prettytable = "~3.2"
+prettytable = ">=3.2,<3.4"
 typer = "~0.4"
 python-decouple = "~3.6"
 
