@@ -1,59 +1,87 @@
 """Module for parse and interact with config."""
 
 from dataclasses import dataclass
-from os import path
-from typing import Literal
+from enum import Enum
+from os import environ
+from pathlib import Path
 
-from decouple import AutoConfig, RepositoryIni
-
-__all__ = ["Config", "config"]
-
-
-# Customising decouple
-class CustomRepositoryIni(RepositoryIni):
-    """Just rename section in INI file."""
-
-    SECTION = "mc-plugin-helper"
+from omegaconf import MISSING, OmegaConf
+from omegaconf.dictconfig import DictConfig
 
 
-class CustomDecouple(AutoConfig):
-    """Small patched ``decouple.AutoConfig``.
+class Protocol(Enum):
+    """Protocols for file manager.
 
-    It can't read ``.env`` files, also it read ``.mc-plugin-helper.ini``
-    instead of just ``settings.ini``. And it looks for config in user home folder.
+    .. note:: Currently supporting only local files protocol. In plans also FTP.
     """
 
-    SUPPORTED = {".mc-plugin-helper.ini": CustomRepositoryIni}
-
-    def __init__(self):
-        """Overwrite __init__ method, so it is using only user home folder to find config file."""
-        super().__init__(path.expanduser("~"))
+    LOCAL = "local"
 
 
-decouple = CustomDecouple()  # type: ignore[no-untyped-call]
+class Library(Enum):
+    """Libraries for library manager.
+
+    .. note:: Currently supporting only Spigot library.
+    """
+
+    SPIGOT = "spigot"
+
+
+@dataclass
+class RemoteData:
+    """Data for remote connection."""
+
+    host: str = MISSING
+    port: int = MISSING
+    username: str = MISSING
+    password: str = MISSING
 
 
 @dataclass
 class Config:
     """Class for config."""
 
-    protocol: Literal["local"] = decouple("protocol", default="local")
+    protocol: Protocol = Protocol.LOCAL
     """Currently, supporting local files. In plans also support FTP and SFTP."""
-    default_library: Literal["spigot"] = decouple("default library", default="spigot")
+    default_library: Library = Library.SPIGOT
     """At now only supporting spigot"""
-    plugins_path: str = decouple("plugins path", default="./")
-    remote_host: str = decouple("remote host", default="localhost")
-    remote_port: int = decouple("remote port", default=5432, cast=int)
-    remote_user: str = decouple("remote user", default="root")
-    remote_password: str = decouple("remote password", default="123456")
+    default_plugins_path: str = "./"
+    remote: RemoteData = RemoteData()
 
-    def __post_init__(self):
-        """Check some types in user config."""
-        if self.protocol.lower() not in ["local"]:
-            raise TypeError("Config field `protocol` should be one of ['local']")
-        if self.default_library.lower() not in ["spigot"]:
-            raise TypeError("Config field `default library` should be one of ['spigot']")
+    @classmethod
+    def setup(cls) -> "Config":
+        """Set up the config.
+
+        It is just load config from file, also it is rewrite config with merged data.
+
+        Returns:
+            :class:`.Config` instance.
+        """
+        config_path = Path("~").expanduser() / "mc-plugin-helper.yml"
+        cfg = OmegaConf.structured(Config)
+
+        if config_path.exists():
+            loaded_config = OmegaConf.load(config_path)
+            cfg = OmegaConf.merge(cfg, loaded_config)
+
+        with config_path.open("w") as config_file:
+            OmegaConf.save(cfg, config_file)
+
+        cls._handle_env_variables(cfg)
+
+        return cfg  # type: ignore[no-any-return] # interface the same as in :class:`.Config`
+
+    @staticmethod
+    def _handle_env_variables(cfg: DictConfig) -> None:
+        """Process all values, and redef them with values from env variables.
+
+        Args:
+            cfg: :class:`.Config` instance.
+        """
+        for key in cfg:
+            if "MCPH_" + str(key).upper() in environ:
+                cfg[str(key)] = environ[str(key).upper()]
 
 
-config = Config()
+config = Config.setup()
 """Initialised ``Config`` object."""

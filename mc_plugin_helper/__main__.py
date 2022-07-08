@@ -27,7 +27,7 @@ class CLI:
     def check(
         plugin_name: str = Argument("all", help="Plugin name to check, or just `all`."),
         folder: Path = Argument(
-            config.plugins_path,
+            config.default_plugins_path,
             show_default="From Config",
             exists=True,
             file_okay=False,
