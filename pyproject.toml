@@ -43,7 +43,7 @@ python = "^3.8"
 # Our dependecies
 pyyaml = "6.0"
 requests = ">=2.13"
-prettytable = ">=3.3,<3.5"
+prettytable = "~3.4"
 typer = "~0.6"
 omegaconf = "~2.2"
 
