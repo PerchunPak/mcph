@@ -37,6 +37,8 @@ updates:
     - dependency-name: "pytest-mock"
     - dependency-name: "pytest-testmon"
     - dependency-name: "pytest-randomly"
+    - dependency-name: "Faker"
+    - dependency-name: "GitPython"
 
 - package-ecosystem: github-actions
   directory: "/"

@@ -1,7 +1,6 @@
-# Version history
+# Changelog
 
-We follow [Semantic Versions](https://semver.org/).
-
+We follow [Semantic Versions](https://semver.org/) style.
 
 ## Unreleased
 

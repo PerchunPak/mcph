@@ -27,7 +27,7 @@ class SpigotLibraryManager(AbstractLibraryManager):
         latest_version: str = self._api_request(f"resources/{plugin_id}/versions/latest").json()["name"]
         return latest_version
 
-    def get_plugin_data(self, plugin_name: str) -> Optional[Dict[str, Any]]:
+    def get_plugin_data(self, plugin_name: str) -> Optional[Dict[str, Any]]:  # type: ignore[misc]
         """Getter for plugin data.
 
         Args:
@@ -37,7 +37,7 @@ class SpigotLibraryManager(AbstractLibraryManager):
             Parsed JSON answer or None if no plugins found.
         """
         try:
-            to_return: Dict[str, Any] = self._api_request(
+            to_return: Dict[str, Any] = self._api_request(  # type: ignore[misc]
                 f"search/resources/{plugin_name}?field=name&sort=-downloads"
             ).json()[0]
             return to_return

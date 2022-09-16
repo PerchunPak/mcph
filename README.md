@@ -1,10 +1,12 @@
 # mcph
 
+[![Support Ukraine](https://badgen.net/badge/support/UKRAINE/?color=0057B8&labelColor=FFD700)](https://www.gov.uk/government/news/ukraine-what-you-can-do-to-help)
+
 [![Build Status](https://github.com/PerchunPak/mcph/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/PerchunPak/mcph/actions?query=workflow%3Atest)
 [![codecov](https://codecov.io/gh/PerchunPak/mcph/branch/master/graph/badge.svg)](https://codecov.io/gh/PerchunPak/mcph)
 [![Documentation Build Status](https://readthedocs.org/projects/mcph/badge/?version=latest)](https://mcph.readthedocs.io/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Python Version](https://img.shields.io/pypi/pyversions/mcph.svg)](https://pypi.org/project/mcph/)
+[![Python support versions badge (from pypi)](https://img.shields.io/pypi/pyversions/mcph)](https://www.python.org/downloads/)
 
 Minecraft plugin helper, updates and checks versions of all plugins on a server!
 
@@ -19,13 +21,48 @@ At now implemented only output of plugins names and their versions.
 - Easy readable and supportable code!
 - Support for Spigotmc.org plugins!
 
-
-## Installation
+## Installing
 
 ```bash
 pip install mcph
 ```
 
+## Installing for local developing
+
+```bash
+git clone https://github.com/PerchunPak/mcph.git
+cd mcph
+```
+
+### Installing `poetry`
+
+Next we need install `poetry` with [recomended way](https://python-poetry.org/docs/master/#installation).
+
+If you use Linux, use command:
+
+```bash
+curl -sSL https://install.python-poetry.org | python -
+```
+
+If you use Windows, open PowerShell with admin privileges and use:
+
+```powershell
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
+```
+
+### Installing dependencies
+
+```bash
+poetry install --no-dev
+```
+
+### Configuration
+
+All configuration happends in `config.yml`, or with enviroment variables.
+
+### If something is not clear
+
+You can always write me!
 
 ## Example
 
@@ -48,11 +85,12 @@ Check updates for all plugins:
 └────────────────────────────────────────────────────────────────────────────────┘
 ```
 
+## Updating
+
+For updating, just run `pip install -U mcph`. Or if you installed this for developing - `git pull`.
+
 ## Thanks
 
-## Credits
-
-This project was generated with [`fire-square-style`](https://github.com/fire-square/fire-square-style). 
-Current template version is: [9a4d61b1d3707090a14f5ad88291d7b892ae4292](https://github.com/fire-square/fire-square-style/tree/9a4d61b1d3707090a14f5ad88291d7b892ae4292). 
-See what is [updated](https://github.com/fire-square/fire-square-style/compare/9a4d61b1d3707090a14f5ad88291d7b892ae4292...master) 
-since then.
+This project was generated with [fire-square-style](https://github.com/fire-square/fire-square-style).
+Current template version: [0216e16b936827cd7e4dc94f387516afcc480060](https://github.com/fire-square/fire-square-style/tree/0216e16b936827cd7e4dc94f387516afcc480060).
+See what [updated](https://github.com/fire-square/fire-square-style/compare/0216e16b936827cd7e4dc94f387516afcc480060...master).

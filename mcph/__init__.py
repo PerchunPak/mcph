@@ -1,1 +1,1 @@
-"""Main package for project."""
+"""Main package for the project."""

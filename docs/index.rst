@@ -1,16 +1,22 @@
 .. mdinclude:: ../README.md
 
-Contents
---------
+Pages
+-----
 
 .. toctree::
 	:maxdepth: 1
-	:caption: Changelog
+	:caption: Pages
 
 	pages/changelog.rst
+	pages/contributing.rst
 
+.. toctree::
+	:maxdepth: 1
+	:caption: API Reference
 
-Indices and tables
+	api/index.rst
+
+Indexes and tables
 ------------------
 
 * :ref:`genindex`

@@ -1,6 +1,6 @@
 blank_issues_enabled: false
 contact_links:
-  - name: "Blank issue"
+  - name: "Empty Issue"
     url: https://github.com/PerchunPak/mcph/issues/new
-    about: Maintainers only.
+    about: Only for maintainers.
 

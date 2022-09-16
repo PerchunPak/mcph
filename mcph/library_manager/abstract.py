@@ -19,7 +19,7 @@ class AbstractLibraryManager(ABC):
         """
 
     @abstractmethod
-    def get_plugin_data(self, plugin_name: str) -> Optional[Dict[str, Any]]:
+    def get_plugin_data(self, plugin_name: str) -> Optional[Dict[str, Any]]:  # type: ignore[misc]
         """Getter for plugin data.
 
         Args:
@@ -30,7 +30,7 @@ class AbstractLibraryManager(ABC):
         """
 
     @abstractmethod
-    def _api_request(self, url: str) -> Any:
+    def _api_request(self, url: str) -> Any:  # type: ignore[misc]
         """Perform API requests to plugin host.
 
         Args:

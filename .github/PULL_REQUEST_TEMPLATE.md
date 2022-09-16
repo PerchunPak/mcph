@@ -1,11 +1,11 @@
 <!--
-    Thanks for your contributing!!
+    Thank you for your contributing!
 -->
 
-# Important check-list
+# Important Check-List
 
-- [ ] I wrote description about my changes.
-- [ ] I wrote reason of my changes.
-- [ ] I totally sure that complete [this list](https://github.com/PerchunPak/mcph/blob/master/CONTRIBUTING.md#перед-началом-работы).
-- [ ] I wrote my changes in `CHANGELOG.md` and added number of PR there.
-- [ ] Changes successfully passing all steps from `make test`.
+- [ ] I wrote detailed description of my changes.
+- [ ] I wrote detailed reason of my changes.
+- [ ] I sure, that I used all from [this list](https://github.com/PerchunPak/mcph/blob/master/CONTRIBUTING.md#before-submitting).
+- [ ] I wrote short summary of my changes in `CHANGELOG.md` and add PR number to it.
+- [ ] My changes successfully passing all steps from `make test`.

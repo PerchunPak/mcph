@@ -14,11 +14,19 @@ http://www.sphinx-doc.org/en/master/config
 import os
 import sys
 from datetime import date
-from typing import Dict
+from typing import Dict, List, Optional
 
+from autoapi.mappers.python.objects import PythonModule
+from packaging.version import parse as parse_version
+from sphinx.application import Sphinx
 from tomli import load as toml_parse
 
 sys.path.insert(0, os.path.abspath(".."))
+
+
+def setup(sphinx: Sphinx) -> None:
+    """Some setup steps for sphinx."""
+    sphinx.connect("autoapi-skip-member", skip_data_from_docs)
 
 
 # -- Project information -----------------------------------------------------
@@ -34,16 +42,18 @@ project = str(pkg_meta["name"])
 copyright = str(date.today().year) + ", PerchunPak"
 author = "PerchunPak"
 
+parsed_version = parse_version(pkg_meta["version"])
+
 # The short X.Y version
-version = str(pkg_meta["version"])
+version = parsed_version.base_version
 # The full version, including alpha/beta/rc tags
-release = version
+release = str(parsed_version)
 
 
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = "3.3"
+needs_sphinx = "5.0"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named "sphinx.ext.*") or your custom
@@ -55,6 +65,9 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
     "sphinx.ext.autosummary",
+    "sphinx.ext.autosectionlabel",
+    # Used to reference for third party projects:
+    "sphinx.ext.intersphinx",
     # Used to write beautiful docstrings:
     "sphinx.ext.napoleon",
     # Used to include .md files:
@@ -78,6 +91,9 @@ autodoc_default_flags = {
 # Set `typing.TYPE_CHECKING` to `True`:
 # https://pypi.org/project/sphinx-autodoc-typehints/
 set_type_checking_flag = True
+
+# Automatically generate section labels:
+autosectionlabel_prefix_document = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -112,7 +128,6 @@ autodoc_default_options = {
     "show-inheritance": True,
 }
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -139,6 +154,22 @@ napoleon_include_private_with_doc = True
 # Configuration for autoapi
 autoapi_dirs = ["../mcph"]
 autoapi_template_dir = "_autoapi_templates"
+autoapi_root = "api"
+
+# Third-party projects documentation references:
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+}
+
+
+def skip_data_from_docs(
+    app: Sphinx, what: str, name: str, obj: PythonModule, skip: Optional[bool], options: List[str]
+) -> Optional[bool]:
+    """Skip ``log`` function everywhere."""
+    if what == "data" and name.endswith(".log"):
+        skip = True
+    return skip
+
 
 # -- Options for todo extension ----------------------------------------------
 
