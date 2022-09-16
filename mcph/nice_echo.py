@@ -4,7 +4,7 @@ from typing import List
 from prettytable import PrettyTable
 from typer import echo
 
-from mc_plugin_helper.models.plugin import Plugin
+from mcph.models.plugin import Plugin
 
 
 class NiceEcho:

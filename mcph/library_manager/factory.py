@@ -1,7 +1,7 @@
 """Module for library managers factory, use it as entry-point to library managers."""
 
-from mc_plugin_helper.config import Library
-from mc_plugin_helper.library_manager.spigot import SpigotLibraryManager
+from mcph.config import Library
+from mcph.library_manager.spigot import SpigotLibraryManager
 
 
 class LibraryManagerFactory:

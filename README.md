@@ -1,10 +1,10 @@
-# mc-plugin-helper
+# mcph
 
-[![Build Status](https://github.com/PerchunPak/mc-plugin-helper/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/PerchunPak/mc-plugin-helper/actions?query=workflow%3Atest)
-[![codecov](https://codecov.io/gh/PerchunPak/mc-plugin-helper/branch/master/graph/badge.svg)](https://codecov.io/gh/PerchunPak/mc-plugin-helper)
-[![Documentation Build Status](https://readthedocs.org/projects/mc-plugin-helper/badge/?version=latest)](https://mc-plugin-helper.readthedocs.io/)
+[![Build Status](https://github.com/PerchunPak/mcph/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/PerchunPak/mcph/actions?query=workflow%3Atest)
+[![codecov](https://codecov.io/gh/PerchunPak/mcph/branch/master/graph/badge.svg)](https://codecov.io/gh/PerchunPak/mcph)
+[![Documentation Build Status](https://readthedocs.org/projects/mcph/badge/?version=latest)](https://mcph.readthedocs.io/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Python Version](https://img.shields.io/pypi/pyversions/mc-plugin-helper.svg)](https://pypi.org/project/mc-plugin-helper/)
+[![Python Version](https://img.shields.io/pypi/pyversions/mcph.svg)](https://pypi.org/project/mcph/)
 
 Minecraft plugin helper, updates and checks versions of all plugins on a server!
 
@@ -14,7 +14,7 @@ At now implemented only output of plugins names and their versions.
 
 ## Features
 
-- Nice and powerful [documentation](https://mc-plugin-helper.readthedocs.io/en/latest/)!
+- Nice and powerful [documentation](https://mcph.readthedocs.io/en/latest/)!
 - Easy management plugins in simple commands!
 - Easy readable and supportable code!
 - Support for Spigotmc.org plugins!
@@ -23,7 +23,7 @@ At now implemented only output of plugins names and their versions.
 ## Installation
 
 ```bash
-pip install mc-plugin-helper
+pip install mcph
 ```
 
 
@@ -32,7 +32,7 @@ pip install mc-plugin-helper
 Check updates for all plugins:
 
 ```bash
-~ $ mc-plugin-helper check all .
+~ $ mcph check all .
 
 ┌────────────────────────────────────────────────────────────────────────────────┐
 │ Num │        Name        │  Current Version  │ Last Version │ Update Available │

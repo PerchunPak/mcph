@@ -5,10 +5,10 @@ from typing import Dict, List, Optional
 
 from yaml import safe_load as parse_yaml
 
-from mc_plugin_helper.config import config
-from mc_plugin_helper.file_manager.factory import FileManagerFactory
-from mc_plugin_helper.library_manager.factory import LibraryManagerFactory
-from mc_plugin_helper.models.plugin import Plugin
+from mcph.config import config
+from mcph.file_manager.factory import FileManagerFactory
+from mcph.library_manager.factory import LibraryManagerFactory
+from mcph.models.plugin import Plugin
 
 
 class PluginManager:

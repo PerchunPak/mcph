@@ -57,7 +57,7 @@ class Config:
         Returns:
             :class:`.Config` instance.
         """
-        config_path = Path("~").expanduser() / "mc-plugin-helper.yml"
+        config_path = Path("~").expanduser() / "mcph.yml"
         cfg = OmegaConf.structured(Config)
 
         if config_path.exists():

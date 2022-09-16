@@ -137,7 +137,7 @@ html_static_path = ["_static"]
 napoleon_include_private_with_doc = True
 
 # Configuration for autoapi
-autoapi_dirs = ["../mc_plugin_helper"]
+autoapi_dirs = ["../mcph"]
 autoapi_template_dir = "_autoapi_templates"
 
 # -- Options for todo extension ----------------------------------------------

@@ -4,7 +4,7 @@ from typing import Any, Dict, Optional
 import requests
 from requests.models import Response
 
-from mc_plugin_helper.library_manager.abstract import AbstractLibraryManager
+from mcph.library_manager.abstract import AbstractLibraryManager
 
 
 class SpigotLibraryManager(AbstractLibraryManager):
@@ -53,5 +53,5 @@ class SpigotLibraryManager(AbstractLibraryManager):
         Returns:
             Raw answer.
         """
-        headers = {"User-Agent": "mc-plugin-helper"}
+        headers = {"User-Agent": "mcph"}
         return requests.get("https://api.spiget.org/v2/" + url, headers=headers)

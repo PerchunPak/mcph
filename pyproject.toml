@@ -3,11 +3,11 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-mc-plugin-helper = "mc_plugin_helper.__main__:run"
+mcph = "mcph.__main__:run"
 
 
 [tool.poetry]
-name = "mc-plugin-helper"
+name = "mcph"
 description = "Minecraft plugin helper, updates and checks versions of all plugins on a server!"
 version = "0.1.0-beta.dev"
 license = "AGPL3"
@@ -16,7 +16,7 @@ authors = ["PerchunPak <perchunpak@gmail.com>"]
 
 readme = "README.md"
 
-repository = "https://github.com/PerchunPak/mc-plugin-helper"
+repository = "https://github.com/PerchunPak/mcph"
 
 classifiers = [
   "Development Status :: 4 - Beta",

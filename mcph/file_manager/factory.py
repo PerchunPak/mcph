@@ -1,7 +1,7 @@
 """Module for file managers factory, use it as entry-point to file managers."""
 
-from mc_plugin_helper.config import Protocol
-from mc_plugin_helper.file_manager.local import LocalFileManager
+from mcph.config import Protocol
+from mcph.file_manager.local import LocalFileManager
 
 
 class FileManagerFactory:

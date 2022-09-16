@@ -4,11 +4,11 @@ from pathlib import Path
 
 from typer import Argument, Typer, echo
 
-from mc_plugin_helper.config import config
-from mc_plugin_helper.nice_echo import NiceEcho
-from mc_plugin_helper.plugin_manager import PluginManager
+from mcph.config import config
+from mcph.nice_echo import NiceEcho
+from mcph.plugin_manager import PluginManager
 
-app = Typer(name="mc-plugin-helper")
+app = Typer(name="mcph")
 
 
 class CLI:
