@@ -42,7 +42,7 @@ pyyaml = "6.0"
 requests = ">=2.13"
 prettytable = "~3.5"
 typer = "~0.6"
-omegaconf = "~2.2"
+omegaconf = "~2.3"
 
 structlog = "22.1.0"
 ### For colors in structlog ###
