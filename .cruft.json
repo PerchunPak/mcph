@@ -1,0 +1,24 @@
+{
+  "template": "https://github.com/PerchunPak/python-template",
+  "commit": "1642c609d567e38d282508952a7b4f72654f4da5",
+  "context": {
+    "cookiecutter": {
+      "project_name": "mcph",
+      "organization": "PerchunPak",
+      "project_description": "Minecraft plugin helper, updates and checks versions of all plugins on a server!",
+      "other_languages_support": "n",
+      "ukrainian_language_support": "n",
+      "russian_language_support": "n",
+      "license": "AGPL3",
+      "_copy_without_render": [
+        ".venv",
+        "docs/_build",
+        "docs/_autoapi_templates/python",
+        ".github/workflows"
+      ],
+      "_template": "https://github.com/PerchunPak/python-template"
+    }
+  },
+  "directory": null,
+  "checkout": null
+}

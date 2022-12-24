@@ -36,7 +36,7 @@ cd mcph
 
 ### Installing `poetry`
 
-Next we need install `poetry` with [recomended way](https://python-poetry.org/docs/master/#installation).
+Next we need install `poetry` with [recommended way](https://python-poetry.org/docs/master/#installation).
 
 If you use Linux, use command:
 
@@ -58,7 +58,7 @@ poetry install --no-dev
 
 ### Configuration
 
-All configuration happends in `config.yml`, or with enviroment variables.
+All configuration happens in `config.yml`, or with enviroment variables.
 
 ### If something is not clear
 
@@ -92,5 +92,3 @@ For updating, just run `pip install -U mcph`. Or if you installed this for devel
 ## Thanks
 
 This project was generated with [fire-square-style](https://github.com/fire-square/fire-square-style).
-Current template version: [0216e16b936827cd7e4dc94f387516afcc480060](https://github.com/fire-square/fire-square-style/tree/0216e16b936827cd7e4dc94f387516afcc480060).
-See what [updated](https://github.com/fire-square/fire-square-style/compare/0216e16b936827cd7e4dc94f387516afcc480060...master).

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry-core>=1.2.0"]
+requires = ["poetry-core>=1.3.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
@@ -35,7 +35,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8.1,<3.12"
 
 # Our dependecies
 pyyaml = "6.0"
@@ -44,7 +44,7 @@ prettytable = "~3.5"
 typer = "~0.6"
 omegaconf = "~2.3"
 
-structlog = "22.1.0"
+structlog = "22.3.0"
 ### For colors in structlog ###
 ### Only needed for Windows ###
 colorama = { version = "*", markers="platform_system == 'Windows'" }
@@ -55,33 +55,37 @@ black = "~22"
 isort = "~5.10"
 pycln = "~2.1"
 doc8 = "~1.0"
-mypy = "0.971"
-flake8 = "~5"
+mypy = "*"  # dependabot can't update non semver dependencies with our config, see e9376da in python-template
+flake8 = "~6"
 flake8-docstrings = "~1"
+flake8-ensure-ascii = "~1.0"
 pydocstyle = ">=4.0.0"
-safety = "~2.1"
+safety = "~2.3"
+# workaround before https://github.com/cruft/cruft/pull/197 will be merged
+cruft = { git = "https://github.com/OverkillGuy/cruft", branch = "fix-extension-context" }
+lice = "~0.6"  # for generating template
 
 pre-commit = "~2.20"
 
 
 [tool.poetry.group.tests.dependencies]
-pytest = "~7.1"
-pytest-cov = "~3.0"
-pytest-mock = "~3.8"
-pytest-testmon = "~1.3"
+pytest = "~7.2"
+pytest-cov = "~4.0"
+pytest-mock = "~3.10"
+pytest-testmon = "~1.4"
 pytest-randomly = "~3.12"
-Faker = "~14.2"
+Faker = "~15.3"
 
 
 [tool.poetry.group.docs.dependencies]
-sphinx = "~5.1"
+sphinx = "~5.3"
 sphinx-autodoc-typehints = "~1.19"
-sphinx-autoapi = "~1.9"
+sphinx-autoapi = "~2.0"
 sphinx-intl = "~2.0"  # only for locales
 furo = "*"
 m2r2 = "~0.3"
-tomli = "~2.0"
-packaging = "21.3"
+tomli = { version = "~2.0", markers = "python_version < '3.11'" }
+packaging = "22.0"
 
 
 [tool.poetry.group.github_hooks]
@@ -94,4 +98,4 @@ GitPython = "~3.1"
 
 [tool.black]
 line-length = 120
-target-version = ['py310']
+target-version = ['py38']
