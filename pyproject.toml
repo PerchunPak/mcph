@@ -51,21 +51,20 @@ colorama = { version = "*", markers="platform_system == 'Windows'" }
 
 
 [tool.poetry.group.make.dependencies]
-black = "~22"
-isort = "~5.10"
+black = "~23"
+isort = "~5.12"
 pycln = "~2.1"
-doc8 = "~1.0"
-mypy = "*"  # dependabot can't update non semver dependencies with our config, see e9376da in python-template
+doc8 = "~1.1"
+mypy = "~1.0"
 flake8 = "~6"
 flake8-docstrings = "~1"
 flake8-ensure-ascii = "~1.0"
 pydocstyle = ">=4.0.0"
 safety = "~2.3"
-# workaround before https://github.com/cruft/cruft/pull/197 will be merged
-cruft = { git = "https://github.com/OverkillGuy/cruft", branch = "fix-extension-context" }
+cruft = "~2.12"
 lice = "~0.6"  # for generating template
 
-pre-commit = "~2.20"
+pre-commit = "~3.1"
 
 
 [tool.poetry.group.tests.dependencies]
@@ -74,18 +73,18 @@ pytest-cov = "~4.0"
 pytest-mock = "~3.10"
 pytest-testmon = "~1.4"
 pytest-randomly = "~3.12"
-Faker = "~15.3"
+Faker = "~17.6"
 
 
 [tool.poetry.group.docs.dependencies]
-sphinx = "~5.3"
-sphinx-autodoc-typehints = "~1.19"
+sphinx = "~6.1"
+sphinx-autodoc-typehints = "~1.22"
 sphinx-autoapi = "~2.0"
-sphinx-intl = "~2.0"  # only for locales
+sphinx-intl = "~2.1"  # only for locales
 furo = "*"
 m2r2 = "~0.3"
 tomli = { version = "~2.0", markers = "python_version < '3.11'" }
-packaging = "22.0"
+packaging = "23.0"
 
 
 [tool.poetry.group.github_hooks]
