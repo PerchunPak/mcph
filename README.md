@@ -10,9 +10,12 @@
 
 Minecraft plugin helper, updates and checks versions of all plugins on a server!
 
-# Project in developing! Please do not use it!
+# The project is archived
 
-At now implemented only output of plugins names and their versions.
+I have no interest in continuing the project, as I no longer build servers in Minecraft. While I could build such software well,
+I just don't need this. If you want to use something same, look at [pluGET](https://github.com/Neocky/pluGET) (this is originally
+their idea) or [mineflake](https://github.com/nix-community/mineflake) (same idea, but instead of managing already downloaded plugins,
+you can build an entire container for the server, where every plugin is compiled from sources during the build!).
 
 ## Features
 
